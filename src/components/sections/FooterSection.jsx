@@ -84,7 +84,7 @@ export default function FooterSection() {
       {/* TruckNRoll accent rail */}
       <div style={{
         background: 'var(--accent)',
-        color: '#121315',
+        color: 'var(--bg)',
         overflow: 'hidden',
         padding: 'clamp(0.3rem, 0.5vw, 0.5rem) 0',
       }}>

@@ -37,3 +37,7 @@ next-env.d.ts
 
 # User specific scraping data
 /trionnWget/
+
+# Dev Scripts
+add_reveals.mjs
+check_console.mjs

@@ -8,6 +8,7 @@ import { useSoundEffects } from '@/hooks/useSoundEffects';
  * - Small teal dot (#C5FCFC) with mix-blend-mode: difference
  * - Smooth GSAP-like interpolation following mouse
  * - Scales up on hoverable elements (buttons, links)
+ * - Respects prefers-reduced-motion
  * - Hidden on mobile/touch
  */
 export default function CustomCursor() {
@@ -16,15 +17,37 @@ export default function CustomCursor() {
   const pos = useRef({ x: 0, y: 0 });
   const target = useRef({ x: 0, y: 0 });
   const rafId = useRef(null);
-  const state = useRef({ type: 'default', text: '' }); // default, hover, text
+  const state = useRef({ type: 'default', text: '' });
   const { playHover, playClick } = useSoundEffects();
+  const isTouchDevice = useRef(false);
+  const prefersReducedMotion = useRef(false);
 
   useEffect(() => {
+    // Check for touch device
+    const checkTouchDevice = () => {
+      return (
+        ('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0)
+      );
+    };
+    isTouchDevice.current = checkTouchDevice();
+
+    // Check prefers-reduced-motion
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    prefersReducedMotion.current = mediaQuery.matches;
+
+    // If mobile or reduced motion enabled, don't initialize cursor
+    if (isTouchDevice.current || prefersReducedMotion.current) {
+      return;
+    }
+
     const cursor = cursorRef.current;
     const textEl = textRef.current;
     if (!cursor || !textEl) return;
 
     // Hide default cursor
+    document.documentElement.style.scrollBehavior = 'auto';
     document.body.style.cursor = 'none';
 
     const onMove = (e) => {
@@ -44,7 +67,6 @@ export default function CustomCursor() {
       if (s.type === 'text') {
         textEl.innerText = s.text;
         textEl.style.opacity = 1;
-        // inverse scale so text stays readable
         textEl.style.transform = `scale(${1/scale})`;
       } else {
         textEl.style.opacity = 0;
@@ -67,7 +89,9 @@ export default function CustomCursor() {
 
     // Attach hover listeners to interactive elements
     const attachHoverables = () => {
-      const hoverables = document.querySelectorAll('a, button, [role="button"], input, textarea, .btn-primary, .btn-outline, [data-cursor]');
+      const hoverables = document.querySelectorAll(
+        'a, button, [role="button"], input, textarea, select, .btn-primary, .btn-outline, [data-cursor]'
+      );
       hoverables.forEach(el => {
         el.style.cursor = 'none';
         el.addEventListener('mouseenter', onEnterHoverable);
@@ -78,24 +102,24 @@ export default function CustomCursor() {
     };
 
     window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseenter', onMove);
     rafId.current = requestAnimationFrame(animate);
 
     // Attach now and re-attach on DOM changes
     let hoverables = attachHoverables();
     const observer = new MutationObserver(() => {
-      // Cleanup old
       hoverables.forEach(el => {
         el.removeEventListener('mouseenter', onEnterHoverable);
         el.removeEventListener('mouseleave', onLeaveHoverable);
         el.removeEventListener('click', onClickHoverable);
       });
-      // Reattach new
       hoverables = attachHoverables();
     });
     observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseenter', onMove);
       cancelAnimationFrame(rafId.current);
       document.body.style.cursor = '';
       hoverables.forEach(el => {
@@ -107,37 +131,50 @@ export default function CustomCursor() {
     };
   }, []);
 
+  // Don't render cursor on mobile or if reduced motion is preferred
+  if (isTouchDevice.current || prefersReducedMotion.current) {
+    return null;
+  }
+
   return (
     <div
       ref={cursorRef}
+      aria-hidden="true"
       style={{
         position: 'fixed',
-        top: 0,
-        left: 0,
+        top: '-10px',
+        left: '-10px',
         width: '20px',
         height: '20px',
         borderRadius: '9999px',
-        backgroundColor: '#C5FCFC',
+        backgroundColor: 'var(--accent)',
         pointerEvents: 'none',
         zIndex: 99999,
-        mixBlendMode: 'difference',
+        mixBlendMode: 'normal',
+        boxShadow: '0 0 12px var(--accent-dim)',
         transition: 'transform 0.1s linear',
         willChange: 'transform',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        border: '2px solid var(--accent)',
       }}
     >
-      <span ref={textRef} style={{
-        color: '#121315', // inverse since mixBlendMode difference
-        fontFamily: 'var(--font-mono)',
-        fontSize: '10px',
-        fontWeight: 'bold',
-        textTransform: 'uppercase',
-        opacity: 0,
-        pointerEvents: 'none',
-        transition: 'opacity 0.2s',
-      }}></span>
+      <span 
+        ref={textRef} 
+        aria-hidden="true"
+        style={{
+          color: 'var(--bg)',
+          fontFamily: 'var(--font-mono)',
+          fontSize: '10px',
+          fontWeight: 'bold',
+          textTransform: 'uppercase',
+          opacity: 0,
+          pointerEvents: 'none',
+          transition: 'opacity 0.2s',
+          textShadow: '0 0 4px var(--accent-glow)',
+        }}
+      />
     </div>
   );
 }

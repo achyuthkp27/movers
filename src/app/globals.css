@@ -103,6 +103,12 @@ body {
   overflow-x: clip;
 }
 
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+
 ::selection {
   color: var(--accent);
   background: none;
@@ -476,4 +482,50 @@ html.lenis, html.lenis body { height: auto; }
 @media (max-width: 768px) {
   .section-title { flex-direction: column; }
   .section-title__right { max-width: 100%; }
+}
+
+/* ── Prefers Reduced Motion ────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable parallax on reduced motion */
+  .parallax-wrapper {
+    transform: none !important;
+  }
+
+  /* Disable hover effects */
+  .btn-primary:hover {
+    transform: none !important;
+  }
+
+  .btn-outline:hover {
+    transform: none !important;
+  }
+
+  /* Keep text visible at all times */
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Disable animation-based reveals */
+  .hero-line,
+  .hero-fadeup,
+  .gallery-item,
+  .section-title,
+  .contact-content {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  /* Disable mask animations */
+  [style*="clip-path"] {
+    clip-path: none !important;
+  }
 }

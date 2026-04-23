@@ -2,7 +2,7 @@
 import Reveal from '@/components/ui/Reveal';
 
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 
@@ -36,6 +36,18 @@ const testimonials = [
 export default function TestimonialsSection() {
   const ref = useRef(null);
   const [active, setActive] = useState(0);
+  const touchStart = useRef(0);
+
+  // Auto-play: rotate every 5 seconds, pause on hover
+  const paused = useRef(false);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!paused.current) {
+        setActive(prev => (prev + 1) % testimonials.length);
+      }
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   useGSAP(() => {
       gsap.fromTo('.testimonial-section', { opacity: 0, y: 40 }, {
@@ -47,7 +59,18 @@ export default function TestimonialsSection() {
   const t = testimonials[active];
 
   return (
-    <section ref={ref} className="section" id="testimonials">
+    <section ref={ref} className="section" id="testimonials"
+      onMouseEnter={() => { paused.current = true; }}
+      onMouseLeave={() => { paused.current = false; }}
+      onTouchStart={(e) => { touchStart.current = e.touches[0].clientX; }}
+      onTouchEnd={(e) => {
+        const diff = touchStart.current - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) setActive((active + 1) % testimonials.length);
+          else setActive((active - 1 + testimonials.length) % testimonials.length);
+        }
+      }}
+    >
       <div className="container testimonial-section">
         <div className="section-title">
           <div className="section-title__left">

@@ -1,6 +1,6 @@
 'use client';
 import Reveal from '@/components/ui/Reveal';
-
+import Image from 'next/image';
 
 import ParallaxImage from '@/components/ui/ParallaxImage';
 
@@ -60,7 +60,14 @@ export default function GallerySection() {
             }}>
               <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
                 <ParallaxImage speed={20}>
-                  <img src={item.src} alt={item.label} />
+                  <Image 
+                    src={item.src} 
+                    alt={item.label}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                    priority={i === 0}
+                  />
                 </ParallaxImage>
               </div>
               

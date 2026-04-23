@@ -1,49 +1,73 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-import LoadingScreen from '@/components/LoadingScreen';
-import CustomCursor from '@/components/CustomCursor';
-import Navbar from '@/components/Navbar';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import HeroSection from '@/components/hero/HeroSection';
 import StorySection from '@/components/sections/StorySection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import MarqueeSection from '@/components/sections/MarqueeSection';
 import ProcessSection from '@/components/sections/ProcessSection';
 import StatsSection from '@/components/sections/StatsSection';
+import ShowcaseSection from '@/components/sections/ShowcaseSection';
+import FAQSection from '@/components/sections/FAQSection';
+import AchievedSection from '@/components/sections/AchievedSection';
 import TrackingSection from '@/components/sections/TrackingSection';
 import WhyChooseSection from '@/components/sections/WhyChooseSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import GallerySection from '@/components/sections/GallerySection';
 import BookingSection from '@/components/sections/BookingSection';
+import ContactFormSection from '@/components/sections/ContactFormSection';
 import FooterSection from '@/components/sections/FooterSection';
-
-const ChatBot = dynamic(() => import('@/components/smart/ChatBot'), { ssr: false });
-const FluidCanvas = dynamic(() => import('@/components/FluidCanvas'), { ssr: false });
 
 export default function Home() {
   return (
-    <>
-      <LoadingScreen />
-      <CustomCursor />
-      <FluidCanvas />
-      <Navbar />
-
+    <ErrorBoundary>
       <main style={{ position: 'relative', zIndex: 1 }}>
-        <HeroSection />
-        <StorySection />
-        <ServicesSection />
-        <MarqueeSection />
-        <ProcessSection />
-        <StatsSection />
-        <TrackingSection />
-        <WhyChooseSection />
-        <TestimonialsSection />
-        <GallerySection />
-        <BookingSection />
+        <ErrorBoundary>
+          <HeroSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <ShowcaseSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <StorySection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <ServicesSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <MarqueeSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <TrackingSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <WhyChooseSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <StatsSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <ProcessSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <AchievedSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <TestimonialsSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <GallerySection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <FAQSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <BookingSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <FooterSection />
+        </ErrorBoundary>
       </main>
-
-      <FooterSection />
-      <ChatBot />
-    </>
+    </ErrorBoundary>
   );
 }

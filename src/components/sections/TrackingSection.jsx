@@ -59,6 +59,7 @@ export default function TrackingSection() {
               textTransform: 'uppercase',
               maxWidth: '50%',
               marginBottom: 'var(--space-2xl)',
+              color: '#E0EEEE',
             }}>
               Every move<br />is different.
             </div>
@@ -70,6 +71,7 @@ export default function TrackingSection() {
               letterSpacing: '-0.02em',
               textTransform: 'uppercase',
               textAlign: 'right',
+              color: '#E0EEEE',
             }}>
               We always<br />stay on track.
             </div>

@@ -70,9 +70,7 @@ export default function StorySection() {
         </div>
 
         {/* Split description */}
-        <div className="story-body" style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
+        <div className="story-body grid-2" style={{
           gap: 'var(--space-lg)',
           maxWidth: '900px',
           marginLeft: 'auto',
@@ -96,7 +94,6 @@ export default function StorySection() {
           </div>
         </div>
 
-        <style jsx>{`@media(max-width:768px){.story-body{grid-template-columns:1fr !important;}}`}</style>
       </div>
     </section>
   );

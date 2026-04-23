@@ -26,6 +26,11 @@ export default function FluidCanvas() {
         return;
       }
 
+      // Disable entirely on mobile screens (< 768px) to save battery and improve performance
+      if (window.innerWidth < 768) {
+        return;
+      }
+
       import('webgl-fluid-enhanced').then((mod) => {
         const WebGLFluid = mod.default;
 
@@ -63,8 +68,8 @@ export default function FluidCanvas() {
             colorPalette: ['#C5FCFC'],
             hover: true,
             backgroundColor: '#000000',
-            transparent: false,
-            brightness: 0.5,
+            transparent: true,
+            brightness: 0.7,
             bloom: false,
             sunrays: false,
           });
@@ -125,7 +130,8 @@ export default function FluidCanvas() {
       height: '100vh',
       zIndex: 0,
       pointerEvents: 'none',
-      mixBlendMode: 'lighten',
+      mixBlendMode: 'normal',
+      opacity: 0.85,
       overflow: 'hidden',
     }}>
       <div

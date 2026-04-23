@@ -1,5 +1,8 @@
 'use client';
 import Reveal from '@/components/ui/Reveal';
+import ParallaxImage from '@/components/ui/ParallaxImage';
+import Image from 'next/image';
+import Link from 'next/link';
 
 
 import { useRef } from 'react';
@@ -9,21 +12,24 @@ import { gsap } from '@/lib/gsapConfig';
 const services = [
   {
     num: '01',
-    title: 'Home\nRelocation',
+    title: 'Home Relocation',
     desc: 'Every detail is handled. Every deadline met. No stress. No scrambling. Just a team that makes sure everything arrives exactly as planned.',
-    gradient: 'linear-gradient(135deg, #0d1117 0%, #1a2332 100%)',
+    src: '/services/home.webp',
+    slug: 'home-relocation',
   },
   {
     num: '02',
-    title: 'Office\nShifting',
+    title: 'Office Shifting',
     desc: 'We sync with your timeline, your challenges, and your priorities. Zero downtime guaranteed. Your business never stops moving.',
-    gradient: 'linear-gradient(135deg, #0a0e14 0%, #151d2b 100%)',
+    src: '/services/office.webp',
+    slug: 'office-shifting',
   },
   {
     num: '03',
-    title: 'Vehicle\nTransport',
+    title: 'Vehicle Transport',
     desc: 'From the road to your door, safety is at the heart of everything we do. Inspected carriers, strict protocols, experienced crew.',
-    gradient: 'linear-gradient(135deg, #080c12 0%, #121a25 100%)',
+    src: '/services/vehicle.webp',
+    slug: 'vehicle-transport',
   },
 ];
 
@@ -93,51 +99,57 @@ export default function ServicesSection() {
                 marginBottom: 'var(--space-md)',
               }} />
 
-              <div className="service-content">
+              <div className="service-content" style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '1.5rem',
+              }}>
                 {/* Number */}
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: 'clamp(1.5rem, 4vw, 3.75rem)',
-                  marginBottom: 'var(--space-md)',
+                <span className="text-small" style={{ 
+                  color: 'var(--fg-subtle)', 
+                  whiteSpace: 'nowrap',
+                  marginTop: '0.45em',
+                  lineHeight: 1,
+                  flexShrink: 0,
                 }}>
-                  <span className="text-small" style={{ color: 'var(--fg-subtle)', marginTop: '4px' }}>
-                    ( {s.num} )
-                  </span>
-                  <Reveal as="h3" style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(1.5rem, 1rem + 1.5vw, 2.5rem)',
-                    fontWeight: 700,
-                    lineHeight: 0.9,
-                    letterSpacing: '-0.02em',
-                    whiteSpace: 'pre-line',
+                  ({s.num})
+                </span>
+
+                <div style={{ flex: 1 }}>
+                  {/* Title */}
+                  <Reveal as="h3" className="text-heading-md" style={{
+                    lineHeight: 1,
+                    marginBottom: 'var(--space-sm)',
                   }}>
                     {s.title}
                   </Reveal>
-                </div>
 
-                {/* Description */}
-                <p className="text-body" style={{ maxWidth: '25rem' }}>
-                  {s.desc}
-                </p>
+                  {/* Description */}
+                  <p className="text-body" style={{ maxWidth: '25rem', marginBottom: 'var(--space-md)' }}>
+                    {s.desc}
+                  </p>
 
-                {/* Visual card */}
-                <div style={{
-                  marginTop: 'var(--space-md)',
-                  aspectRatio: '4.3/3',
-                  maxWidth: '21.875rem',
-                  borderRadius: 'var(--radius-xs) var(--radius-xs) var(--radius-lg) var(--radius-xs)',
-                  background: s.gradient,
-                  border: '1px solid var(--border)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="0.5" opacity="0.15">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                  </svg>
+                  {/* Visual card */}
+                  <Link href={`/services/${s.slug}`} style={{ display: 'block' }}>
+                    <div data-cursor="view" style={{
+                      aspectRatio: '4.3/3',
+                      maxWidth: '21.875rem',
+                      borderRadius: 'var(--radius-xs) var(--radius-xs) var(--radius-lg) var(--radius-xs)',
+                      border: '1px solid var(--border)',
+                      position: 'relative',
+                      overflow: 'hidden',
+                    }}>
+                      <ParallaxImage speed={15}>
+                        <Image 
+                          src={s.src} 
+                          alt={s.title.replace('\n', ' ')} 
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          style={{ objectFit: 'cover' }}
+                        />
+                      </ParallaxImage>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>

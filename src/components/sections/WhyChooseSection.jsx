@@ -13,28 +13,28 @@ import { gsap } from '@/lib/gsapConfig';
 const advantages = [
   {
     num: '01',
-    title: 'Real-Time\nVisibility',
+    title: 'Real-Time Visibility',
     desc: 'GPS-tracked fleet with live status dashboard. Know exactly where your belongings are — down to the street level — at every moment of the journey.',
     stat: '100%',
     statLabel: 'Trackable',
   },
   {
     num: '02',
-    title: 'Zero\nDamage Policy',
+    title: 'Zero Damage Policy',
     desc: 'Military-grade packing. Custom crating for fragile items. Full insurance coverage included. If anything breaks, we replace it — no questions asked.',
     stat: '₹10L',
     statLabel: 'Coverage',
   },
   {
     num: '03',
-    title: 'On-Time\nGuarantee',
+    title: 'On-Time Guarantee',
     desc: 'We don\'t do "approximately." Every move has a locked delivery window. Miss it, and we refund the difference. That\'s how confident we are.',
     stat: '99.2%',
     statLabel: 'On-Time',
   },
   {
     num: '04',
-    title: 'Dedicated Move\nManager',
+    title: 'Dedicated Move Manager',
     desc: 'One point of contact from start to finish. No call centers. No ticket queues. Your move manager knows your name, your inventory, and your timeline.',
     stat: '1:1',
     statLabel: 'Support',
@@ -110,11 +110,7 @@ export default function WhyChooseSection() {
         </div>
 
         {/* Advantage grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: 0,
-        }}>
+        <div className="grid-2" style={{ gap: 0 }}>
           {advantages.map((a, i) => (
             <div key={i} className="advantage-item" style={{ padding: 0 }}>
               {/* Top border */}
@@ -138,28 +134,35 @@ export default function WhyChooseSection() {
                   <div style={{
                     display: 'flex',
                     alignItems: 'flex-start',
-                    gap: 'clamp(1rem, 3vw, 2.5rem)',
+                    gap: '1.25rem',
                     marginBottom: 'var(--space-md)',
                   }}>
-                    <span className="text-small" style={{ color: 'var(--fg-subtle)', marginTop: '4px' }}>
-                      ( {a.num} )
-                    </span>
-                    <Reveal as="h3" style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: 'clamp(1.3rem, 0.9rem + 1.2vw, 2.2rem)',
-                      fontWeight: 700,
-                      lineHeight: 0.9,
-                      letterSpacing: '-0.02em',
-                      whiteSpace: 'pre-line',
+                    {/* Number */}
+                    <span className="text-small" style={{ 
+                      color: 'var(--fg-subtle)', 
+                      whiteSpace: 'nowrap',
+                      marginTop: '0.45em',
+                      lineHeight: 1,
+                      flexShrink: 0,
                     }}>
-                      {a.title}
-                    </Reveal>
-                  </div>
+                      ({a.num})
+                    </span>
 
-                  {/* Description */}
-                  <p className="text-body" style={{ maxWidth: '22rem' }}>
-                    {a.desc}
-                  </p>
+                    <div style={{ flex: 1 }}>
+                      {/* Title */}
+                      <Reveal as="h3" className="text-heading-sm" style={{
+                        lineHeight: 1,
+                        marginBottom: 'var(--space-sm)',
+                      }}>
+                        {a.title}
+                      </Reveal>
+
+                      {/* Description */}
+                      <p className="text-body" style={{ maxWidth: '22rem' }}>
+                        {a.desc}
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Stat */}
@@ -191,9 +194,6 @@ export default function WhyChooseSection() {
         }} />
       </div>
 
-      <style jsx>{`@media(max-width:768px){
-        .container > div:nth-child(2) { grid-template-columns: 1fr !important; }
-      }`}</style>
     </section>
   );
 }
