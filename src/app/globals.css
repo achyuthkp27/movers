@@ -1,26 +1,479 @@
-@import "tailwindcss";
+/* ============================================================
+   SWIFTMOVE® — Premium Design System
+   Inspired by TRIONN + TruckNRoll CSS architecture
+   ============================================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap');
+
+/* ── Reset ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+img, svg, video, canvas { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
+ul, ol { list-style: none; }
+h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: inherit; }
+
+/* ── Fluid Root Font Size (TRIONN pattern) ────── */
+html {
+  font-variant-numeric: lining-nums;
+  font-family: 'Syne', var(--font-inter), system-ui, sans-serif;
+  font-size: 16px;
+}
+@media (min-width: 1920px) { html { font-size: 18px; } }
+
+/* ── Design Tokens ─────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors — TRIONN palette */
+  --bg:           #121315;
+  --bg-secondary: #0d0e10;
+  --bg-card:      #1a1b1f;
+  --bg-elevated:  #1f2022;
+  --fg:           #E0EEEE;
+  --fg-muted:     #a8b5b5;
+  --fg-subtle:    #6b7878;
+  --accent:       #C5FCFC;
+  --accent-dim:   rgba(197, 252, 252, 0.4);
+  --accent-glow:  rgba(197, 252, 252, 0.15);
+  --border:       rgba(224, 238, 238, 0.12);
+  --border-hover: rgba(197, 252, 252, 0.3);
+
+  /* Typography */
+  --font-body:    'Syne', var(--font-inter), system-ui, sans-serif;
+  --font-mono:    'DM Mono', monospace;
+  --font-display: 'Syne', var(--font-poppins), system-ui, sans-serif;
+
+  /* Fluid spacing (TruckNRoll pattern) */
+  --space-xs:   clamp(0.5rem, 0.46rem + 0.22vw, 0.625rem);
+  --space-sm:   clamp(1rem, 0.83rem + 0.87vw, 1.5rem);
+  --space-md:   clamp(1.5rem, 1.33rem + 0.87vw, 2rem);
+  --space-lg:   clamp(2rem, 1.83rem + 0.87vw, 2.5rem);
+  --space-xl:   clamp(2.5rem, 2.15rem + 1.74vw, 3.5rem);
+  --space-2xl:  clamp(3.5rem, 2.76rem + 3.7vw, 5.625rem);
+  --space-3xl:  clamp(5.625rem, 4.32rem + 6.52vw, 9.375rem);
+  --space-4xl:  clamp(9.375rem, 8.29rem + 5.43vw, 12.5rem);
+
+  /* Container */
+  --container-padding: clamp(1.25rem, 0.5rem + 3.75vw, 5rem);
+
+  /* Radius */
+  --radius-xs:  0.25rem;
+  --radius-sm:  0.5rem;
+  --radius-md:  0.875rem;
+  --radius-lg:  2.5rem;
+
+  /* Transitions */
+  --duration-fast:   0.25s;
+  --duration:        0.4s;
+  --duration-slow:   0.6s;
+  --duration-slower: 0.8s;
+  --ease:            cubic-bezier(0.3, 0.4, 0, 1);
+  --ease-out:        cubic-bezier(0, 0, 0.2, 1);
+  --ease-power3:     cubic-bezier(0.165, 0.84, 0.44, 1);
+  --ease-power4:     cubic-bezier(0.23, 1, 0.32, 1);
+
+  /* Z-index */
+  --z-header: 50;
+  --z-modal:  700;
+  --z-loader: 1000;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+[data-theme='light'] {
+  --bg:           #FAFAFA;
+  --bg-secondary: #F0F0F0;
+  --bg-card:      #FFFFFF;
+  --bg-elevated:  #F8F8F8;
+  --fg:           #121315;
+  --fg-muted:     #4a5555;
+  --fg-subtle:    #7b8888;
+  --accent:       #0a8f8f;
+  --accent-dim:   rgba(10, 143, 143, 0.2);
+  --accent-glow:  rgba(10, 143, 143, 0.1);
+  --border:       rgba(0, 0, 0, 0.12);
+  --border-hover: rgba(0, 0, 0, 0.3);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ── Base Styles ───────────────────────────────── */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-x: clip;
+}
+
+::selection {
+  color: var(--accent);
+  background: none;
+}
+
+/* Custom Scrollbar (TRIONN) */
+::-webkit-scrollbar { background: var(--bg); width: 10px; }
+::-webkit-scrollbar-thumb {
+  background: rgba(197, 252, 252, 0.3);
+  border-radius: 5px;
+}
+html { scrollbar-color: rgba(197, 252, 252, 0.3) var(--bg); }
+
+/* ── Typography Scale ──────────────────────────── */
+
+/* Display — Massive (TruckNRoll heading-huge) */
+.text-display {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 1rem + 5.5vw, 7rem);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+}
+
+/* Heading XL */
+.text-heading-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 1rem + 4vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+}
+
+/* Heading LG */
+.text-heading-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 0.8rem + 3.2vw, 4rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+/* Heading MD */
+.text-heading-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1rem + 2vw, 3rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+/* Heading SM */
+.text-heading-sm {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 0.9rem + 1vw, 2rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+/* Body */
+.text-body {
+  font-size: clamp(0.9375rem, 0.88rem + 0.22vw, 1.0625rem);
+  line-height: 1.6;
+  color: var(--fg-muted);
+}
+
+/* Small label */
+.text-small {
+  font-family: var(--font-body);
+  font-size: clamp(0.6875rem, 0.64rem + 0.22vw, 0.8125rem);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+
+/* Mono numbers */
+.text-mono {
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+}
+
+/* ── Marquee Text (TRIONN h3 = 15rem!) ─────────── */
+.text-marquee {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 2rem + 8vw, 12rem);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Gradient Text ─────────────────────────────── */
+.gradient-text {
+  color: transparent;
+  background: linear-gradient(135deg, var(--accent) 0%, #78FFEF 50%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Scroll-reveal gradient (TRIONN h3 pattern) */
+.text-reveal {
+  color: transparent;
+  background: linear-gradient(to right, var(--fg) 50%, rgba(224, 238, 238, 0.15) 50%) 100% 0 / 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: background-position 1s var(--ease);
+}
+.text-reveal.is-visible { background-position-x: 0%; }
+
+/* ── Layout ────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+@media (min-width: 1920px) { .container { max-width: 1920px; } }
+
+.section {
+  padding: var(--space-3xl) 0;
+  position: relative;
+}
+
+/* ── Section Title (TRIONN tr__section__title pattern) ── */
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.section-title__left h3 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 1.5rem + 4vw, 6rem);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+}
+
+.section-title__right {
+  max-width: 28rem;
+}
+
+.section-title__right h4 {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 0.9rem + 0.5vw, 1.5rem);
+  line-height: 1.35;
+  font-weight: 400;
+  margin-bottom: var(--space-md);
+}
+
+/* ── Horizontal Line with Arrow Dot (TRIONN .line) ── */
+.line-separator {
+  background-color: var(--fg);
+  width: 100%;
+  height: 1px;
+  position: relative;
+  opacity: 0.15;
+}
+.line-separator::after {
+  content: '→';
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.625rem;
+  color: var(--fg);
+  opacity: 0.5;
+}
+
+/* ── Inview Border (TruckNRoll pattern) ────────── */
+.inview-border {
+  position: relative;
+}
+.inview-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform-origin: 0 0;
+  transform: scaleX(0);
+  transition: transform var(--duration-slower) cubic-bezier(0.77, 0, 0.175, 1);
+  opacity: 0.2;
+}
+.inview-border.is-visible::before {
+  transform: scaleX(1);
+}
+
+/* ── Buttons (TRIONN pill + glow) ──────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 0.7rem + 0.3vw, 0.95rem);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--bg);
+  background: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 9999px;
+  position: relative;
+  white-space: nowrap;
+  transition: all var(--duration-fast) var(--ease);
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--accent);
+  box-shadow: 0 0 30px rgba(197, 252, 252, 0.15);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 0.7rem + 0.3vw, 0.95rem);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--accent);
+  background: transparent;
+  border: 2px solid var(--accent);
+  border-radius: 9999px;
+  white-space: nowrap;
+  transition: all var(--duration-fast) var(--ease);
+  cursor: pointer;
+}
+.btn-outline:hover {
+  background: var(--accent);
+  color: var(--bg);
+  box-shadow: 0 0 30px rgba(197, 252, 252, 0.15);
+}
+
+/* ── Glass Card ────────────────────────────────── */
+.glass {
+  background: rgba(26, 27, 31, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.glass-subtle {
+  background: rgba(26, 27, 31, 0.4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Divider ───────────────────────────────────── */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Glow Dot (online indicator) ───────────────── */
+.glow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 8px #00ff8866;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px #00ff8866; }
+  50% { opacity: 0.6; box-shadow: 0 0 4px #00ff8833; }
+}
+
+/* ── Marquee Animation ─────────────────────────── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.marquee-track {
+  animation: marquee 25s linear infinite;
+}
+
+/* ── Noise / Grain Overlay ─────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Responsive Grid Helpers ───────────────────── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+@media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+@media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+@media (max-width: 1024px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  { .grid-4 { grid-template-columns: 1fr; } }
+
+/* ── Overlay for splash sections ───────────────── */
+.overlay::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--bg);
+  opacity: 0.35;
+  z-index: 1;
+}
+
+/* ── Dot Pattern Texture (TruckNRoll) ──────────── */
+.dot-pattern {
+  position: relative;
+}
+.dot-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle, var(--fg) 1px, transparent 1px) 0 0 / 20px 20px,
+    radial-gradient(circle, var(--fg) 1px, transparent 1px) 10px 10px / 20px 20px;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Smooth scroll (Lenis) ─────────────────────── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ── Accessibility ─────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Responsive type tweaks ────────────────────── */
+@media (max-width: 768px) {
+  .section-title { flex-direction: column; }
+  .section-title__right { max-width: 100%; }
 }
