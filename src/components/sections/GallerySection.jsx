@@ -1,6 +1,7 @@
 'use client';
 import Reveal from '@/components/ui/Reveal';
 import Image from 'next/image';
+import { assetPath } from '@/lib/basePath';
 
 import ParallaxImage from '@/components/ui/ParallaxImage';
 
@@ -25,10 +26,10 @@ export default function GallerySection() {
     }, { scope: ref });
 
   const items = [
-    { h: '16rem', span: 'span 2', src: '/gallery/move-1.png', label: 'Premium Packing' },
-    { h: '20rem', span: 'span 1', src: '/gallery/move-2.png', label: 'Residential Move' },
-    { h: '20rem', span: 'span 1', src: '/gallery/move-3.png', label: 'Office Setup' },
-    { h: '16rem', span: 'span 2', src: '/gallery/move-4.png', label: 'Vehicle Transport' },
+    { h: '16rem', span: 'span 2', src: assetPath('/gallery/move-1.png'), label: 'Premium Packing' },
+    { h: '20rem', span: 'span 1', src: assetPath('/gallery/move-2.png'), label: 'Residential Move' },
+    { h: '20rem', span: 'span 1', src: assetPath('/gallery/move-3.png'), label: 'Office Setup' },
+    { h: '16rem', span: 'span 2', src: assetPath('/gallery/move-4.png'), label: 'Vehicle Transport' },
   ];
 
   return (

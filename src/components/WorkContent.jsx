@@ -72,7 +72,7 @@ export default function WorkContent({ data }) {
             }}
           >
             <img 
-              src={assetPath(data.img)} 
+              src={data.img} 
               alt={data.title}
               style={{
                 width: '100%',

@@ -3,6 +3,7 @@ import Reveal from '@/components/ui/Reveal';
 import ParallaxImage from '@/components/ui/ParallaxImage';
 import Image from 'next/image';
 import Link from 'next/link';
+import { assetPath } from '@/lib/basePath';
 
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
@@ -13,21 +14,21 @@ const services = [
     num: '01',
     title: 'Home Relocation',
     desc: 'Every detail is handled. Every deadline met. No stress. No scrambling. Just a team that makes sure everything arrives exactly as planned.',
-    src: '/services/home.webp',
+    src: assetPath('/services/home.webp'),
     slug: 'home-relocation',
   },
   {
     num: '02',
     title: 'Office Shifting',
     desc: 'We sync with your timeline, your challenges, and your priorities. Zero downtime guaranteed. Your business never stops moving.',
-    src: '/services/office.webp',
+    src: assetPath('/services/office.webp'),
     slug: 'office-shifting',
   },
   {
     num: '03',
     title: 'Vehicle Transport',
     desc: 'From the road to your door, safety is at the heart of everything we do. Inspected carriers, strict protocols, experienced crew.',
-    src: '/services/vehicle.webp',
+    src: assetPath('/services/vehicle.webp'),
     slug: 'vehicle-transport',
   },
 ];
