@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 import { gsap } from '@/lib/gsapConfig';
 import FooterSection from '@/components/sections/FooterSection';
+import { assetPath } from '@/lib/basePath';
 
 export default function WorkContent({ data }) {
   const router = useRouter();
@@ -71,7 +72,7 @@ export default function WorkContent({ data }) {
             }}
           >
             <img 
-              src={data.img} 
+              src={assetPath(data.img)} 
               alt={data.title}
               style={{
                 width: '100%',

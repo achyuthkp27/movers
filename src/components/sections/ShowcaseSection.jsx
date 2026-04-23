@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 import Link from 'next/link';
+import { assetPath } from '@/lib/basePath';
 
 export default function ShowcaseSection() {
   const containerRef = useRef(null);
@@ -106,7 +107,7 @@ export default function ShowcaseSection() {
         >
           {/* We're using a high-quality gallery image as a placeholder for the video */}
           <img 
-            src="/gallery/move-1.png" 
+            src={assetPath('/gallery/move-1.png')} 
             alt="SwiftMove Showcase" 
             style={{
               width: '100%',

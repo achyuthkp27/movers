@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import FooterSection from '@/components/sections/FooterSection';
+import { assetPath } from '@/lib/basePath';
 
 const FluidCanvas = dynamic(() => import('@/components/FluidCanvas'), { ssr: false });
 const ChatBot = dynamic(() => import('@/components/smart/ChatBot'), { ssr: false });
@@ -57,7 +58,7 @@ export default function WorkPage() {
                     position: 'relative'
                   }}>
                     <img 
-                      src={project.img} 
+                      src={assetPath(project.img)} 
                       alt={project.title}
                       style={{
                         width: '100%',
