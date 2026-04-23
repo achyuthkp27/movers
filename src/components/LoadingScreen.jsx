@@ -2,14 +2,6 @@
 
 import { useEffect, useState } from 'react';
 
-/**
- * Cinematic loader — truck bouncing along a road
- * - Animated SVG truck with suspension bounce + wheel spin
- * - Road with dashed lane markings scrolling beneath
- * - Dust particles trailing behind
- * - TRIONN-style counter in bottom-right
- * - Theme-aware: uses CSS variables
- */
 export default function LoadingScreen() {
   const [progress, setProgress] = useState(0);
   const [exiting, setExiting] = useState(false);
@@ -29,11 +21,9 @@ export default function LoadingScreen() {
     }
 
     const run = () => {
-      // If loaded, quickly jump to 100
       if (isLoaded && current >= 80) {
         current += 5;
       } else {
-        // Otherwise simulate progress, slowing down as it reaches 90%
         const increment = current < 60 ? 2.5 : current < 90 ? 0.8 : 0.1;
         current = Math.min(current + increment, isLoaded ? 100 : 95);
       }
@@ -77,24 +67,18 @@ export default function LoadingScreen() {
       overflow: 'hidden',
     }}>
 
-      {/* === Scene Container === */}
       <div className="loader-scene">
-        {/* Landscape background elements */}
         <div className="loader-sky">
-          {/* Subtle moving clouds */}
           <div className="loader-cloud loader-cloud--1" />
           <div className="loader-cloud loader-cloud--2" />
           <div className="loader-cloud loader-cloud--3" />
         </div>
 
-        {/* Truck + Road group */}
         <div className="loader-ground">
-          {/* Road surface */}
           <div className="loader-road">
             <div className="loader-road__surface" />
             <div className="loader-road__markings">
               <div className="loader-road__dash-track">
-                {/* Generate dashes */}
                 {Array.from({ length: 20 }).map((_, i) => (
                   <div key={i} className="loader-road__dash" />
                 ))}
@@ -104,10 +88,8 @@ export default function LoadingScreen() {
             <div className="loader-road__edge loader-road__edge--bottom" />
           </div>
 
-          {/* Bouncing truck */}
           <div className="loader-truck-wrapper">
             <div className="loader-truck-bounce">
-              {/* Dust particles */}
               <div className="loader-dust">
                 <span className="loader-dust__particle loader-dust__particle--1" />
                 <span className="loader-dust__particle loader-dust__particle--2" />
@@ -116,26 +98,22 @@ export default function LoadingScreen() {
                 <span className="loader-dust__particle loader-dust__particle--5" />
               </div>
 
-              {/* Truck SVG */}
               <svg
                 className="loader-truck-svg"
                 viewBox="0 0 120 60"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                {/* Truck body (cargo) */}
                 <rect
                   x="8" y="10" width="52" height="30" rx="3"
                   fill="var(--bg-elevated)"
                   stroke="var(--accent)"
                   strokeWidth="2"
                 />
-                {/* Cargo lines */}
                 <line x1="20" y1="15" x2="20" y2="35" stroke="var(--accent)" strokeWidth="0.8" opacity="0.3" />
                 <line x1="34" y1="15" x2="34" y2="35" stroke="var(--accent)" strokeWidth="0.8" opacity="0.3" />
                 <line x1="48" y1="15" x2="48" y2="35" stroke="var(--accent)" strokeWidth="0.8" opacity="0.3" />
 
-                {/* SwiftMove label on body */}
                 <text
                   x="34" y="28"
                   textAnchor="middle"
@@ -148,7 +126,6 @@ export default function LoadingScreen() {
                   SWIFT
                 </text>
 
-                {/* Cabin */}
                 <path
                   d="M60 18 L60 40 L85 40 L85 26 L75 18 Z"
                   fill="var(--bg-elevated)"
@@ -156,7 +133,6 @@ export default function LoadingScreen() {
                   strokeWidth="2"
                   strokeLinejoin="round"
                 />
-                {/* Windshield */}
                 <path
                   d="M66 20 L74 20 L82 27 L82 33 L66 33 Z"
                   fill="var(--accent)"
@@ -164,45 +140,36 @@ export default function LoadingScreen() {
                   stroke="var(--accent)"
                   strokeWidth="1"
                 />
-                {/* Windshield divider */}
                 <line x1="74" y1="20" x2="74" y2="33" stroke="var(--accent)" strokeWidth="0.8" opacity="0.4" />
 
-                {/* Headlight */}
                 <rect x="83" y="30" width="4" height="6" rx="1" fill="var(--accent)" opacity="0.7" />
                 <circle cx="85" cy="33" r="1.5" fill="var(--accent)" opacity="0.4">
                   <animate attributeName="opacity" values="0.4;0.8;0.4" dur="1.5s" repeatCount="indefinite" />
                 </circle>
 
-                {/* Bumper */}
                 <rect x="5" y="38" width="82" height="3" rx="1.5" fill="var(--bg-card)" stroke="var(--accent)" strokeWidth="1" />
 
-                {/* Front wheel */}
                 <g className="loader-wheel loader-wheel--front">
                   <circle cx="75" cy="44" r="7" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="2" />
                   <circle cx="75" cy="44" r="3" fill="var(--bg)" stroke="var(--accent)" strokeWidth="1" />
-                  {/* Wheel spokes */}
                   <line x1="75" y1="38" x2="75" y2="50" stroke="var(--accent)" strokeWidth="0.6" opacity="0.4" />
                   <line x1="69" y1="44" x2="81" y2="44" stroke="var(--accent)" strokeWidth="0.6" opacity="0.4" />
                   <line x1="70.8" y1="39.8" x2="79.2" y2="48.2" stroke="var(--accent)" strokeWidth="0.6" opacity="0.4" />
                   <line x1="79.2" y1="39.8" x2="70.8" y2="48.2" stroke="var(--accent)" strokeWidth="0.6" opacity="0.4" />
                 </g>
 
-                {/* Rear wheel */}
                 <g className="loader-wheel loader-wheel--rear">
                   <circle cx="25" cy="44" r="7" fill="var(--bg-secondary)" stroke="var(--accent)" strokeWidth="2" />
                   <circle cx="25" cy="44" r="3" fill="var(--bg)" stroke="var(--accent)" strokeWidth="1" />
-                  {/* Wheel spokes */}
                   <line x1="25" y1="38" x2="25" y2="50" stroke="var(--accent)" strokeWidth="0.6" opacity="0.4" />
                   <line x1="19" y1="44" x2="31" y2="44" stroke="var(--accent)" strokeWidth="0.6" opacity="0.4" />
                   <line x1="20.8" y1="39.8" x2="29.2" y2="48.2" stroke="var(--accent)" strokeWidth="0.6" opacity="0.4" />
                   <line x1="29.2" y1="39.8" x2="20.8" y2="48.2" stroke="var(--accent)" strokeWidth="0.6" opacity="0.4" />
                 </g>
 
-                {/* Exhaust pipe */}
                 <rect x="3" y="36" width="6" height="2" rx="1" fill="var(--fg-subtle)" opacity="0.5" />
               </svg>
 
-              {/* Exhaust smoke */}
               <div className="loader-exhaust">
                 <span className="loader-exhaust__puff loader-exhaust__puff--1" />
                 <span className="loader-exhaust__puff loader-exhaust__puff--2" />
@@ -211,7 +178,6 @@ export default function LoadingScreen() {
             </div>
           </div>
 
-          {/* Small road objects scrolling by */}
           <div className="loader-scenery">
             <div className="loader-scenery__track">
               <div className="loader-milestone loader-milestone--1">▸</div>
@@ -220,14 +186,12 @@ export default function LoadingScreen() {
           </div>
         </div>
 
-        {/* Brand text below the scene */}
         <div className="loader-brand">
           <span className="loader-brand__name">SwiftMove®</span>
           <span className="loader-brand__tagline">Loading Experience</span>
         </div>
       </div>
 
-      {/* Counter — bottom right (TRIONN style) */}
       <div style={{
         position: 'absolute',
         bottom: 'clamp(1rem, 3vw, 3rem)',
@@ -241,7 +205,6 @@ export default function LoadingScreen() {
         {String(progress).padStart(3, '0')}
       </div>
 
-      {/* Progress bar */}
       <div style={{
         position: 'absolute', bottom: 0, left: 0, height: '2px',
         background: 'var(--accent)', width: `${progress}%`,
@@ -250,7 +213,6 @@ export default function LoadingScreen() {
       }} />
 
       <style jsx>{`
-        /* ── Scene Layout ─────────────────────── */
         .loader-scene {
           display: flex;
           flex-direction: column;
@@ -269,7 +231,6 @@ export default function LoadingScreen() {
           overflow: hidden;
         }
 
-        /* ── Clouds ───────────────────────────── */
         .loader-cloud {
           position: absolute;
           background: var(--fg-subtle);
@@ -299,14 +260,12 @@ export default function LoadingScreen() {
           100% { transform: translateX(calc(500px + 100%)); }
         }
 
-        /* ── Ground ───────────────────────────── */
         .loader-ground {
           position: relative;
           width: 100%;
           height: 120px;
         }
 
-        /* ── Road ─────────────────────────────── */
         .loader-road {
           position: absolute;
           bottom: 0;
@@ -335,7 +294,6 @@ export default function LoadingScreen() {
           opacity: 0.15;
         }
 
-        /* ── Road dashes ──────────────────────── */
         .loader-road__markings {
           position: absolute;
           top: 50%;
@@ -363,7 +321,6 @@ export default function LoadingScreen() {
           100% { transform: translateX(-42px); }
         }
 
-        /* ── Truck ────────────────────────────── */
         .loader-truck-wrapper {
           position: absolute;
           bottom: 28px;
@@ -395,7 +352,6 @@ export default function LoadingScreen() {
           }
         }
 
-        /* ── Wheels spinning ──────────────────── */
         .loader-wheel {
           transform-origin: center;
           animation: wheel-spin 0.5s linear infinite;
@@ -411,7 +367,6 @@ export default function LoadingScreen() {
           100% { transform: rotate(360deg); }
         }
 
-        /* ── Dust Particles ───────────────────── */
         .loader-dust {
           position: absolute;
           left: -8px;
@@ -457,7 +412,6 @@ export default function LoadingScreen() {
           }
         }
 
-        /* ── Exhaust Smoke ────────────────────── */
         .loader-exhaust {
           position: absolute;
           left: -4px;
@@ -497,7 +451,6 @@ export default function LoadingScreen() {
           }
         }
 
-        /* ── Scenery milestones ────────────────── */
         .loader-scenery {
           position: absolute;
           bottom: 42px;
@@ -523,7 +476,6 @@ export default function LoadingScreen() {
           100% { transform: translateX(-200px); }
         }
 
-        /* ── Brand Text ───────────────────────── */
         .loader-brand {
           text-align: center;
           margin-top: 0.5rem;
@@ -547,7 +499,6 @@ export default function LoadingScreen() {
           opacity: 0.5;
         }
 
-        /* ── Reduced Motion ───────────────────── */
         @media (prefers-reduced-motion: reduce) {
           .loader-truck-bounce,
           .loader-wheel,

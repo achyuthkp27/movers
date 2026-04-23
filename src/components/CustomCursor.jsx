@@ -3,14 +3,6 @@
 import { useEffect, useRef } from 'react';
 import { useSoundEffects } from '@/hooks/useSoundEffects';
 
-/**
- * TRIONN-style custom cursor
- * - Small teal dot (#C5FCFC) with mix-blend-mode: difference
- * - Smooth GSAP-like interpolation following mouse
- * - Scales up on hoverable elements (buttons, links)
- * - Respects prefers-reduced-motion
- * - Hidden on mobile/touch
- */
 export default function CustomCursor() {
   const cursorRef = useRef(null);
   const textRef = useRef(null);
@@ -23,7 +15,6 @@ export default function CustomCursor() {
   const prefersReducedMotion = useRef(false);
 
   useEffect(() => {
-    // Check for touch device
     const checkTouchDevice = () => {
       return (
         ('ontouchstart' in window) ||
@@ -33,11 +24,9 @@ export default function CustomCursor() {
     };
     isTouchDevice.current = checkTouchDevice();
 
-    // Check prefers-reduced-motion
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     prefersReducedMotion.current = mediaQuery.matches;
 
-    // If mobile or reduced motion enabled, don't initialize cursor
     if (isTouchDevice.current || prefersReducedMotion.current) {
       return;
     }
@@ -46,7 +35,6 @@ export default function CustomCursor() {
     const textEl = textRef.current;
     if (!cursor || !textEl) return;
 
-    // Hide default cursor
     document.documentElement.style.scrollBehavior = 'auto';
     document.body.style.cursor = 'none';
 
@@ -55,7 +43,6 @@ export default function CustomCursor() {
     };
 
     const animate = () => {
-      // Lerp for smooth follow
       pos.current.x += (target.current.x - pos.current.x) * 0.15;
       pos.current.y += (target.current.y - pos.current.y) * 0.15;
       
@@ -87,7 +74,6 @@ export default function CustomCursor() {
     const onLeaveHoverable = () => { state.current = { type: 'default', text: '' }; };
     const onClickHoverable = () => { playClick(); };
 
-    // Attach hover listeners to interactive elements
     const attachHoverables = () => {
       const hoverables = document.querySelectorAll(
         'a, button, [role="button"], input, textarea, select, .btn-primary, .btn-outline, [data-cursor]'
@@ -105,7 +91,6 @@ export default function CustomCursor() {
     window.addEventListener('mouseenter', onMove);
     rafId.current = requestAnimationFrame(animate);
 
-    // Attach now and re-attach on DOM changes
     let hoverables = attachHoverables();
     const observer = new MutationObserver(() => {
       hoverables.forEach(el => {
@@ -131,7 +116,6 @@ export default function CustomCursor() {
     };
   }, []);
 
-  // Don't render cursor on mobile or if reduced motion is preferred
   if (isTouchDevice.current || prefersReducedMotion.current) {
     return null;
   }

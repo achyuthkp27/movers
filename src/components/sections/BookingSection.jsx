@@ -5,17 +5,10 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 
-/**
- * ULTRA-PREMIUM Contact Section
- * - Glassmorphism cards
- * - Background stroke typography
- * - Tactile Magnetic interactions
- */
 export default function BookingSection() {
   const ref = useRef(null);
 
   useGSAP(() => {
-      // Title reveal
       gsap.utils.toArray('.contact-title-line').forEach((el, i) => {
         gsap.fromTo(el, {
           clipPath: 'inset(0 0 100% 0)',
@@ -35,7 +28,6 @@ export default function BookingSection() {
         scrollTrigger: { trigger: ref.current, start: 'top 60%' },
       });
 
-      // Background text parallax
       gsap.fromTo('.contact-bg-text', {
         x: '10%'
       }, {
@@ -52,7 +44,6 @@ export default function BookingSection() {
   return (
     <section ref={ref} className="section" id="booking" style={{ position: 'relative', overflow: 'hidden' }}>
       
-      {/* Background Stroke Typography */}
       <div className="contact-bg-text text-stroke" style={{
         position: 'absolute',
         top: '10%',
@@ -68,7 +59,6 @@ export default function BookingSection() {
       </div>
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        {/* Section Title */}
         <div className="section-title">
           <div className="section-title__left">
             <Reveal as="h3" style={{ color: 'var(--fg)' }}>
@@ -88,11 +78,9 @@ export default function BookingSection() {
           </div>
         </div>
 
-        {/* Contact Cards Grid */}
         <div className="grid-3" style={{
           gap: 'var(--space-md)',
         }}>
-          {/* WhatsApp — Primary */}
           <Magnetic strength={0.08}>
             <a href="https://wa.me/911800123456?text=Hi%2C%20I%20need%20help%20with%20my%20move"
               target="_blank" rel="noopener noreferrer"
@@ -137,7 +125,6 @@ export default function BookingSection() {
             </a>
           </Magnetic>
 
-          {/* Phone Call */}
           <Magnetic strength={0.08}>
             <a href="tel:+911800123456"
               className="contact-content glass-premium"
@@ -182,7 +169,6 @@ export default function BookingSection() {
             </a>
           </Magnetic>
 
-          {/* Visit */}
           <Magnetic strength={0.08}>
             <div className="contact-content glass-premium" style={{
               borderRadius: 'var(--radius-lg)',

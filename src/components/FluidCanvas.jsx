@@ -2,11 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 
-/**
- * WebGL Fluid Smoke Effect — TRIONN style
- * 
- * Safely initializes only when container has a valid size to prevent WebGL zero-size crashes.
- */
 export default function FluidCanvas() {
   const innerRef = useRef(null);
 
@@ -19,14 +14,12 @@ export default function FluidCanvas() {
     let initTimeout;
 
     const initFluid = () => {
-      // Prevent WebGL zero-size crash
       const rect = container.getBoundingClientRect();
       if (rect.width === 0 || rect.height === 0) {
         initTimeout = setTimeout(initFluid, 100);
         return;
       }
 
-      // Disable entirely on mobile screens (< 768px) to save battery and improve performance
       if (window.innerWidth < 768) {
         return;
       }
@@ -37,7 +30,6 @@ export default function FluidCanvas() {
         try {
           fluid = new WebGLFluid(container);
 
-          // Override the library's forced styles safely
           container.style.position = 'absolute';
           container.style.top = '0';
           container.style.left = '0';
@@ -89,7 +81,6 @@ export default function FluidCanvas() {
               cancelable: true,
               view: window,
             });
-            // Override offsetX/offsetY getter for the synthetic event
             Object.defineProperty(newEvent, 'offsetX', { get: () => e.clientX });
             Object.defineProperty(newEvent, 'offsetY', { get: () => e.clientY });
             canvas.dispatchEvent(newEvent);
@@ -110,7 +101,6 @@ export default function FluidCanvas() {
       });
     };
 
-    // Delay init slightly to ensure DOM is painted
     initTimeout = setTimeout(initFluid, 100);
 
     return () => {

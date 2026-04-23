@@ -20,7 +20,6 @@ export default function PageTransition({ children }) {
     const tl = gsap.timeline({
       onComplete: () => {
         setDisplayChildren(children);
-        // Entrance animation
         gsap.to(overlayRef.current, {
           y: '-100%',
           duration: 0.8,
@@ -39,7 +38,6 @@ export default function PageTransition({ children }) {
       }
     });
 
-    // Exit animation
     tl.to(overlayRef.current, {
       y: '0%',
       duration: 0.6,
@@ -50,7 +48,6 @@ export default function PageTransition({ children }) {
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
-      {/* Wipe Overlay */}
       <div 
         ref={overlayRef}
         style={{

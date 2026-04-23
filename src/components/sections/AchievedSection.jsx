@@ -40,7 +40,6 @@ export default function AchievedSection() {
   const sectionRef = useRef(null);
 
   useGSAP(() => {
-    // Parallax background text
     gsap.fromTo('.achieved-bg-text', {
       x: '-20%'
     }, {
@@ -53,7 +52,6 @@ export default function AchievedSection() {
       }
     });
 
-    // TRIONN Scroll-triggered entrance: alternate slide from left/right with rotation
     const cards = gsap.utils.toArray('.achieved-card');
     cards.forEach((card, i) => {
       const fromLeft = i % 2 === 0;
@@ -77,7 +75,6 @@ export default function AchievedSection() {
         });
     });
 
-    // Character Swap Animation
     cards.forEach((card) => {
       const numOne = card.querySelector('.achieved-num-one');
       const numTwo = card.querySelector('.achieved-num-two');
@@ -127,7 +124,6 @@ export default function AchievedSection() {
       id="achieved" 
       style={{ position: 'relative', overflow: 'hidden', paddingBottom: 'clamp(8rem, 20vw, 15rem)' }}
     >
-      {/* Background Stroke */}
       <div className="achieved-bg-text text-stroke" style={{
         position: 'absolute',
         bottom: '10%',
@@ -158,7 +154,6 @@ export default function AchievedSection() {
           </div>
         </div>
 
-        {/* 2x2 Staggered Grid with fixed logic */}
         <div className="achieved-grid">
           {achievements.map((a, i) => (
             <div key={i} className="achieved-card-wrapper">
@@ -173,7 +168,6 @@ export default function AchievedSection() {
                 overflow: 'hidden',
                 cursor: 'pointer'
               }}>
-                {/* Corner Accent */}
                 <div style={{
                   position: 'absolute',
                   top: 0,
@@ -184,7 +178,6 @@ export default function AchievedSection() {
                   pointerEvents: 'none'
                 }} />
 
-                {/* Character Swap Number Area */}
                 <div style={{ 
                   position: 'relative',
                   height: 'clamp(4rem, 6vw, 6rem)',
@@ -253,7 +246,6 @@ export default function AchievedSection() {
           .achieved-card-wrapper:nth-child(2n) {
             margin-top: 8rem;
           }
-          /* This ensures the section height accounts for the offset cards */
           .achieved-grid {
             padding-bottom: 8rem;
           }

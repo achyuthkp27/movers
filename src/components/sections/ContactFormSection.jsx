@@ -47,9 +47,7 @@ export default function ContactFormSection() {
     e.preventDefault();
     setLoading(true);
 
-    // In production, send to your backend
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       setSubmitted(true);
       setFormData({ name: '', email: '', phone: '', moveType: 'residential', message: '' });

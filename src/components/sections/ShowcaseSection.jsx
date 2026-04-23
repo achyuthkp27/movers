@@ -11,21 +11,15 @@ export default function ShowcaseSection() {
   const mediaRef = useRef(null);
 
   useGSAP(() => {
-    // Determine responsive border radius and scale
     const isMobile = window.innerWidth < 768;
     const finalRadius = isMobile ? '1.5rem' : '2.5rem'; // ~24px or 40px radius when expanded
 
-    // We start the media small and round like a pill.
-    // Set initial state.
     gsap.set(mediaRef.current, {
       scale: 0.14,
       borderRadius: '100rem',
       transformOrigin: 'top center',
     });
 
-    // Create the scroll animation
-    // When the top of the container hits the bottom of the viewport, it starts.
-    // It finishes when the container has scrolled up by 85% of the viewport height.
     gsap.to(mediaRef.current, {
       y: 0, // In Trionn they use a calculated Y, but scaling transforms it naturally.
       scale: 1,
@@ -53,7 +47,6 @@ export default function ShowcaseSection() {
         paddingBottom: '4rem',
       }}
     >
-      {/* Floating Buttons (Trionn banner_bottom style) */}
       <div 
         className="floating-ctas"
         style={{
@@ -85,7 +78,6 @@ export default function ShowcaseSection() {
         </Link>
       </div>
 
-      {/* Expanding Media Container */}
       <div 
         style={{
           width: '100%',
@@ -105,7 +97,6 @@ export default function ShowcaseSection() {
             position: 'relative',
           }}
         >
-          {/* We're using a high-quality gallery image as a placeholder for the video */}
           <img 
             src={assetPath('/gallery/move-1.png')} 
             alt="SwiftMove Showcase" 
@@ -115,7 +106,6 @@ export default function ShowcaseSection() {
               objectFit: 'cover',
             }}
           />
-          {/* Optional Overlay to make it feel premium */}
           <div style={{
             position: 'absolute',
             inset: 0,

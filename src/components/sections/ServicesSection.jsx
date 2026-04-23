@@ -38,7 +38,6 @@ export default function ServicesSection() {
 
   useGSAP(() => {
       gsap.utils.toArray('.service-item').forEach((el, i) => {
-        // Inview border animation
         gsap.fromTo(el.querySelector('.service-border'), {
           scaleX: 0,
         }, {
@@ -51,7 +50,6 @@ export default function ServicesSection() {
           },
         });
 
-        // Content reveal
         gsap.fromTo(el.querySelector('.service-content'), {
           opacity: 0, y: 30,
         }, {
@@ -62,7 +60,6 @@ export default function ServicesSection() {
           scrollTrigger: { trigger: el, start: 'top 80%' },
         });
 
-        // Image Mask Reveal
         gsap.fromTo(el.querySelector('.service-image-mask'), {
           clipPath: 'inset(100% 0% 0% 0%)'
         }, {
@@ -80,7 +77,6 @@ export default function ServicesSection() {
   return (
     <section ref={ref} className="section" id="services" style={{ paddingBottom: 'var(--space-3xl)' }}>
       <div className="container">
-        {/* TRIONN section title */}
         <div className="section-title">
           <div className="section-title__left">
             <Reveal as="h3" style={{ color: 'var(--fg)' }}>our<br />services</Reveal>
@@ -94,7 +90,6 @@ export default function ServicesSection() {
           </div>
         </div>
 
-        {/* TruckNRoll grid-list pattern */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
@@ -104,7 +99,6 @@ export default function ServicesSection() {
             <div key={i} className="service-item" style={{
               paddingTop: 'var(--space-md)',
             }}>
-              {/* Inview border */}
               <div className="service-border" style={{
                 width: '100%', height: '1px',
                 background: 'var(--fg)',
@@ -119,7 +113,6 @@ export default function ServicesSection() {
                 gap: '1.5rem',
               }}>
                 <div style={{ display: 'flex', gap: '1.5rem' }}>
-                  {/* Number */}
                   <span className="text-small" style={{ 
                     color: 'var(--fg-subtle)', 
                     whiteSpace: 'nowrap',
@@ -131,7 +124,6 @@ export default function ServicesSection() {
                   </span>
 
                   <div style={{ flex: 1 }}>
-                    {/* Title */}
                     <Reveal as="h3" className="text-heading-md" style={{
                       lineHeight: 1,
                       marginBottom: 'var(--space-sm)',
@@ -139,14 +131,12 @@ export default function ServicesSection() {
                       {s.title}
                     </Reveal>
 
-                    {/* Description */}
                     <p className="text-body" style={{ maxWidth: '25rem', marginBottom: 'var(--space-md)', color: 'var(--fg-subtle)' }}>
                       {s.desc}
                     </p>
                   </div>
                 </div>
 
-                {/* Visual card with Mask */}
                 <Link href={`/services/${s.slug}`} style={{ display: 'block' }}>
                   <div className="service-image-mask" data-cursor="view" style={{
                     aspectRatio: '16/10',

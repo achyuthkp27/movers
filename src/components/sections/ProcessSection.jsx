@@ -6,10 +6,6 @@ import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 
-/**
- * TruckNRoll accordion-style process steps
- * with inview borders and expandable details
- */
 const steps = [
   {
     num: '01',
@@ -73,7 +69,6 @@ export default function ProcessSection() {
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {steps.map((s, i) => (
             <div key={i} className="process-item">
-              {/* Inview border */}
               <div className="process-border" style={{
                 width: '100%', height: '1px',
                 background: 'currentColor',
@@ -81,7 +76,6 @@ export default function ProcessSection() {
                 opacity: 0.12,
               }} />
 
-              {/* Accordion summary */}
               <button
                 onClick={() => setActive(active === i ? null : i)}
                 style={{
@@ -116,7 +110,6 @@ export default function ProcessSection() {
                   }}>{s.subtitle}</span>
                 </span>
 
-                {/* Plus/minus icon */}
                 <span style={{
                   flexShrink: 0,
                   width: '1rem', height: '1rem',
@@ -139,7 +132,6 @@ export default function ProcessSection() {
                 </span>
               </button>
 
-              {/* Accordion detail */}
               <div style={{
                 maxHeight: active === i ? '200px' : '0',
                 overflow: 'hidden',
@@ -159,7 +151,6 @@ export default function ProcessSection() {
               </div>
             </div>
           ))}
-          {/* Final border */}
           <div style={{
             width: '100%', height: '1px',
             background: 'currentColor', opacity: 0.12,

@@ -2,16 +2,10 @@
 
 import { useEffect, useRef } from 'react';
 
-/**
- * Premium Synthesized Sound Engine
- * Uses Web Audio API to create zero-latency UI sound effects
- * (clicks and whooshes) without needing external .mp3 assets.
- */
 export function useSoundEffects() {
   const audioCtx = useRef(null);
 
   useEffect(() => {
-    // Initialize audio context only on first user interaction to bypass auto-play policies
     const initAudio = () => {
       if (!audioCtx.current) {
         audioCtx.current = new (window.AudioContext || window.webkitAudioContext)();
@@ -27,7 +21,6 @@ export function useSoundEffects() {
     };
   }, []);
 
-  // Soft mechanical "tick" for clicks
   const playClick = () => {
     if (!audioCtx.current) return;
     const ctx = audioCtx.current;
@@ -50,7 +43,6 @@ export function useSoundEffects() {
     osc.stop(ctx.currentTime + 0.05);
   };
 
-  // Subtle airy "whoosh" for hovering over massive text or buttons
   const playHover = () => {
     if (!audioCtx.current) return;
     const ctx = audioCtx.current;

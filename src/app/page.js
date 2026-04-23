@@ -15,58 +15,35 @@ import WhyChooseSection from '@/components/sections/WhyChooseSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import GallerySection from '@/components/sections/GallerySection';
 import BookingSection from '@/components/sections/BookingSection';
-import ContactFormSection from '@/components/sections/ContactFormSection';
 import FooterSection from '@/components/sections/FooterSection';
+
+const sections = [
+  HeroSection,
+  ShowcaseSection,
+  StorySection,
+  ServicesSection,
+  MarqueeSection,
+  TrackingSection,
+  WhyChooseSection,
+  StatsSection,
+  ProcessSection,
+  AchievedSection,
+  TestimonialsSection,
+  GallerySection,
+  FAQSection,
+  BookingSection,
+  FooterSection
+];
 
 export default function Home() {
   return (
     <ErrorBoundary>
       <main style={{ position: 'relative', zIndex: 1 }}>
-        <ErrorBoundary>
-          <HeroSection />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <ShowcaseSection />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <StorySection />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <ServicesSection />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <MarqueeSection />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <TrackingSection />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <WhyChooseSection />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <StatsSection />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <ProcessSection />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <AchievedSection />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <TestimonialsSection />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <GallerySection />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <FAQSection />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <BookingSection />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <FooterSection />
-        </ErrorBoundary>
+        {sections.map((Section, idx) => (
+          <ErrorBoundary key={idx}>
+            <Section />
+          </ErrorBoundary>
+        ))}
       </main>
     </ErrorBoundary>
   );

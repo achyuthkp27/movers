@@ -9,9 +9,6 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 
-/**
- * TruckNRoll c-splash gallery — minimal visual grid
- */
 export default function GallerySection() {
   const ref = useRef(null);
 
@@ -72,9 +69,7 @@ export default function GallerySection() {
                 </ParallaxImage>
               </div>
               
-              {/* Gradient overlay so text is readable */}
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%)', zIndex: 1, pointerEvents: 'none' }} />
-              {/* Numbered overlay */}
               <div style={{
                 position: 'absolute',
                 top: 'var(--space-sm)',
@@ -91,12 +86,10 @@ export default function GallerySection() {
                 </span>
               </div>
 
-              {/* Label */}
               <span className="text-small" style={{ color: 'var(--fg-muted)' }}>
                 {['Residential Move', 'Office Setup', 'Vehicle Transport', 'Premium Packing'][i]}
               </span>
 
-              {/* Subtle icon */}
               <svg style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.04 }}
                 width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="0.5">
                 <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />

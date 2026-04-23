@@ -4,10 +4,6 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 
-/**
- * Premium TRIONN-style scroll reveal for headings and text blocks.
- * Uses a smooth clip-path wipe mixed with a vertical translation.
- */
 export default function Reveal({ children, className = '', as: Component = 'div', delay = 0 }) {
   const ref = useRef(null);
 

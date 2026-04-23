@@ -6,19 +6,12 @@ import { gsap } from '@/lib/gsapConfig';
 import Magnetic from '@/components/ui/Magnetic';
 import Reveal from '@/components/ui/Reveal';
 
-/**
- * ULTRA-PREMIUM Cinematic Hero
- * - Vertical accents
- * - Stroke text + Solid text combinations
- * - Advanced staggered parallax entrance
- */
 export default function HeroSection() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
     const tl = gsap.timeline();
 
-    // Line by line reveal
     tl.fromTo('.hero-line', {
       y: 100,
       opacity: 0,
@@ -33,7 +26,6 @@ export default function HeroSection() {
       delay: 0.5
     });
 
-    // Fade up everything else
     tl.fromTo('.hero-fadeup', {
       y: 30,
       opacity: 0
@@ -45,7 +37,6 @@ export default function HeroSection() {
       ease: 'power2.out'
     }, "-=0.6");
 
-    // Side accent reveal
     tl.fromTo('.hero-side-accent', {
       x: -50,
       opacity: 0
@@ -73,7 +64,6 @@ export default function HeroSection() {
         overflow: 'hidden'
       }}
     >
-      {/* Side Vertical Accent */}
       <div className="hero-side-accent text-mono" style={{
         position: 'absolute',
         left: 'var(--space-xl)',
@@ -89,7 +79,6 @@ export default function HeroSection() {
         Premium Relocation — Est. 2024
       </div>
 
-      {/* Main Content */}
       <div style={{ position: 'relative', zIndex: 10, maxWidth: '1100px' }}>
         
         <div style={{ marginBottom: 'var(--space-md)' }}>
@@ -126,7 +115,6 @@ export default function HeroSection() {
           </p>
         </div>
 
-        {/* CTAs */}
         <div className="hero-fadeup" style={{
           display: 'flex',
           gap: 'var(--space-md)',
@@ -152,7 +140,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Hero Bottom - Scroll Indicator */}
       <div className="hero-fadeup" style={{
         position: 'absolute',
         bottom: 'var(--space-xl)',

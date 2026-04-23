@@ -6,10 +6,6 @@ import { useRef, useState, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 
-/**
- * TRIONN horizontal testimonial slider
- * Large avatar circles, quote blocks, arrow navigation
- */
 const testimonials = [
   {
     quote: "SwiftMove® handled our entire office relocation without a single day of downtime. The precision was remarkable — every desk, every server rack, perfectly placed.",
@@ -38,7 +34,6 @@ export default function TestimonialsSection() {
   const [active, setActive] = useState(0);
   const touchStart = useRef(0);
 
-  // Auto-play: rotate every 5 seconds, pause on hover
   const paused = useRef(false);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -78,14 +73,12 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Quote */}
         <div style={{
           maxWidth: '48rem',
           margin: '0 auto',
           textAlign: 'center',
           padding: 'var(--space-2xl) 0',
         }}>
-          {/* Decorative quote */}
           <div style={{
             fontSize: 'clamp(3rem, 2rem + 3vw, 6rem)',
             lineHeight: 0.5,
@@ -107,7 +100,6 @@ export default function TestimonialsSection() {
             {t.quote}
           </p>
 
-          {/* Author */}
           <div style={{ marginBottom: 'var(--space-lg)' }}>
             <div style={{
               fontFamily: 'var(--font-display)',
@@ -118,7 +110,6 @@ export default function TestimonialsSection() {
             <div className="text-small" style={{ marginTop: '4px' }}>{t.title}</div>
           </div>
 
-          {/* Nav dots & arrows */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
@@ -150,7 +141,6 @@ export default function TestimonialsSection() {
             >→</button>
           </div>
 
-          {/* Counter */}
           <div className="text-mono" style={{
             marginTop: 'var(--space-md)',
             fontSize: '0.75rem',

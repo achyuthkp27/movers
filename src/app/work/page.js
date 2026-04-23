@@ -10,7 +10,6 @@ const FluidCanvas = dynamic(() => import('@/components/FluidCanvas'), { ssr: fal
 const ChatBot = dynamic(() => import('@/components/smart/ChatBot'), { ssr: false });
 
 export default function WorkPage() {
-  // Temporary generic grid data
   const projects = [
     { slug: 'local-shifting', title: 'Local Shifting', desc: 'Seamless moves within the city', img: '/gallery/move-2.png' },
     { slug: 'interstate-relocation', title: 'Interstate Relocation', desc: 'Premium long-distance transport', img: '/gallery/move-3.png' },

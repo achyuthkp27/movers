@@ -1,12 +1,11 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 import FooterSection from '@/components/sections/FooterSection';
 import Image from 'next/image';
-import Reveal from '@/components/ui/Reveal';
 import Magnetic from '@/components/ui/Magnetic';
 
 export default function ServiceContent({ data }) {
@@ -16,7 +15,6 @@ export default function ServiceContent({ data }) {
   useGSAP(() => {
     if (!data) return;
 
-    // Split text reveal for title
     gsap.fromTo('.detail-title-line', {
       y: '100%',
       clipPath: 'inset(0 0 100% 0)'
@@ -29,7 +27,6 @@ export default function ServiceContent({ data }) {
       delay: 0.2
     });
 
-    // Fade up for content
     gsap.fromTo('.detail-fade', {
       opacity: 0,
       y: 30
@@ -42,7 +39,6 @@ export default function ServiceContent({ data }) {
       delay: 0.6
     });
 
-    // Image reveal
     gsap.fromTo('.detail-image-wrap', {
       scale: 1.1,
       clipPath: 'inset(10% 10% 10% 10% round var(--radius-lg))'
@@ -61,7 +57,6 @@ export default function ServiceContent({ data }) {
       <main ref={containerRef} style={{ minHeight: '100vh', paddingTop: 'clamp(8rem, 15vh, 12rem)' }}>
         <div className="container">
           
-          {/* Back Navigation */}
           <div className="detail-fade" style={{ marginBottom: 'var(--space-lg)' }}>
             <Magnetic strength={0.2}>
               <button 
@@ -84,7 +79,6 @@ export default function ServiceContent({ data }) {
             </Magnetic>
           </div>
 
-          {/* Header Section */}
           <div style={{ marginBottom: 'var(--space-2xl)' }}>
             <h1 className="text-display" style={{ marginBottom: 'var(--space-md)' }}>
               <span style={{ display: 'block', overflow: 'hidden' }}>
@@ -102,7 +96,6 @@ export default function ServiceContent({ data }) {
             </div>
           </div>
 
-          {/* Hero Image with Cinematic Reveal */}
           <div className="detail-image-wrap" style={{
             position: 'relative',
             width: '100%',
@@ -119,7 +112,6 @@ export default function ServiceContent({ data }) {
             />
           </div>
 
-          {/* Process Grid */}
           <div style={{ marginBottom: 'var(--space-4xl)' }}>
             <div className="detail-fade" style={{ marginBottom: 'var(--space-2xl)', textAlign: 'center' }}>
               <h2 className="text-heading-xl">The Process</h2>
@@ -148,7 +140,6 @@ export default function ServiceContent({ data }) {
             </div>
           </div>
 
-          {/* Value Prop Banner */}
           <div className="detail-fade" style={{ 
             marginBottom: 'var(--space-4xl)',
             padding: 'var(--space-3xl) var(--space-xl)',
@@ -168,7 +159,6 @@ export default function ServiceContent({ data }) {
             </div>
           </div>
 
-          {/* Call to Action */}
           <div className="detail-fade" style={{ textAlign: 'center', paddingBottom: 'var(--space-4xl)' }}>
             <h2 className="text-heading-xl" style={{ marginBottom: 'var(--space-xl)' }}>Ready to move?</h2>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-md)', flexWrap: 'wrap' }}>

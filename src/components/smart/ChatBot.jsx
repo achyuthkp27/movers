@@ -1,9 +1,5 @@
 'use client';
 
-/**
- * Floating WhatsApp button — replaces chatbot
- * Direct link to WhatsApp with pre-filled message
- */
 export default function ChatBot() {
   return (
     <a

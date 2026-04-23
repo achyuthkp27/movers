@@ -4,10 +4,6 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 
-/**
- * TruckNRoll c-splash style — full-bleed visual section
- * with overlay text and rounded corners
- */
 export default function TrackingSection() {
   const ref = useRef(null);
 
@@ -21,7 +17,6 @@ export default function TrackingSection() {
   return (
     <section ref={ref} className="section" id="tracking">
       <div className="container">
-        {/* Splash visual */}
         <div style={{
           borderRadius: 'var(--radius-xs) var(--radius-xs) var(--radius-lg) var(--radius-lg)',
           overflow: 'hidden',
@@ -33,14 +28,12 @@ export default function TrackingSection() {
           justifyContent: 'flex-end',
           padding: 'clamp(1rem, 2vw, 2rem)',
         }}>
-          {/* Dark overlay */}
           <div style={{
             position: 'absolute', inset: 0,
             background: 'rgba(0,0,0,0.4)',
             zIndex: 0,
           }} />
 
-          {/* Dot pattern */}
           <div style={{
             position: 'absolute', inset: 0,
             backgroundImage: 'radial-gradient(circle, rgba(197,252,252,0.1) 1px, transparent 1px)',
@@ -48,7 +41,6 @@ export default function TrackingSection() {
             zIndex: 0,
           }} />
 
-          {/* Content */}
           <div style={{ position: 'relative', zIndex: 1 }}>
             <div className="tracking-text" style={{
               fontFamily: 'var(--font-display)',
@@ -77,7 +69,6 @@ export default function TrackingSection() {
             </div>
           </div>
 
-          {/* Animated route line */}
           <svg style={{
             position: 'absolute', inset: 0, width: '100%', height: '100%',
             zIndex: 0, opacity: 0.1,

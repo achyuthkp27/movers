@@ -5,11 +5,6 @@ import { motion } from 'framer-motion';
 export default function Template({ children }) {
   return (
     <>
-      {/* 
-        TRIONN-Style Page Wipe Transition.
-        When navigating to a new route, this black mask instantly covers the screen
-        and smoothly wipes upwards, revealing the new page cleanly without browser flashes.
-      */}
       <motion.div
         initial={{ y: '0%' }}
         animate={{ y: '-100%' }}

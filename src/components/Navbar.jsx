@@ -6,10 +6,6 @@ import { usePathname, useRouter } from 'next/navigation';
 import Magnetic from '@/components/ui/Magnetic';
 import Link from 'next/link';
 
-/**
- * TRIONN-style header — mix-blend-mode: difference
- * Features: hide on scroll down, magnetic links, theme toggle, mobile drawer
- */
 export default function Navbar() {
   const lenis = useLenis();
   const pathname = usePathname();
@@ -26,7 +22,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -89,7 +84,6 @@ export default function Navbar() {
             SwiftMove<sup style={{ fontSize: '50%', top: '-0.65em' }}>®</sup>
           </Link>
 
-          {/* Desktop nav */}
           <nav className="nav-desktop">
             <ul style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'center' }}>
               {navLinks.map((link) => (
@@ -121,7 +115,6 @@ export default function Navbar() {
             </ul>
           </nav>
 
-          {/* Mobile hamburger button */}
           <button
             className="nav-burger"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -156,7 +149,6 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile fullscreen drawer */}
       <div style={{
         position: 'fixed',
         inset: 0,

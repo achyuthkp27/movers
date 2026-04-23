@@ -4,9 +4,6 @@ import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 
-/**
- * TRIONN tr__home__achieved style — horizontal scrolling counter blocks
- */
 const stats = [
   { value: 10000, display: '10K', suffix: '+', label: 'moves\ncompleted' },
   { value: 50, display: '50', suffix: '+', label: 'cities\ncovered' },

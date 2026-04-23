@@ -6,15 +6,10 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 
-/**
- * TruckNRoll heading-media style: massive stacked words
- * with scroll-triggered line reveals
- */
 export default function StorySection() {
   const ref = useRef(null);
 
   useGSAP(() => {
-      // Each word line reveals on scroll
       gsap.utils.toArray('.story-word').forEach((el) => {
         gsap.fromTo(el, {
           clipPath: 'inset(0 0 100% 0)',
@@ -32,7 +27,6 @@ export default function StorySection() {
         });
       });
 
-      // Body text fade
       gsap.fromTo('.story-body', { opacity: 0, y: 30 }, {
         opacity: 1, y: 0, duration: 0.8,
         scrollTrigger: { trigger: '.story-body', start: 'top 80%' },
@@ -42,7 +36,6 @@ export default function StorySection() {
   return (
     <section ref={ref} className="section" id="story">
       <div className="container">
-        {/* TRIONN section title pattern */}
         <div className="section-title">
           <div className="section-title__left">
             <Reveal as="h3" style={{ color: 'var(--fg)' }}>
@@ -51,7 +44,6 @@ export default function StorySection() {
           </div>
         </div>
 
-        {/* TruckNRoll massive heading-media words */}
         <div style={{ marginBottom: 'var(--space-2xl)' }}>
           {['WE', 'MOVE', 'YOUR', 'WORLD'].map((word, i) => (
             <div key={word} className="story-word" style={{
@@ -69,7 +61,6 @@ export default function StorySection() {
           ))}
         </div>
 
-        {/* Split description */}
         <div className="story-body grid-2" style={{
           gap: 'var(--space-lg)',
           maxWidth: '900px',

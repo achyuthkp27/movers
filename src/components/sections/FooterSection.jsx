@@ -4,14 +4,10 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 
-/**
- * TRIONN + TruckNRoll footer fusion — contact-driven
- */
 export default function FooterSection() {
   const ref = useRef(null);
 
   useGSAP(() => {
-      // Title line reveal
       gsap.utils.toArray('.footer-line').forEach((el, i) => {
         gsap.fromTo(el, {
           clipPath: 'inset(0 0 100% 0)',
@@ -38,7 +34,6 @@ export default function FooterSection() {
 
   return (
     <footer ref={ref} style={{ overflow: 'hidden', position: 'relative', zIndex: 1 }}>
-      {/* Massive CTA */}
       <div className="container" style={{ paddingTop: 'var(--space-3xl)' }}>
         <div style={{ marginBottom: 'var(--space-2xl)' }}>
           <div style={{
@@ -57,7 +52,6 @@ export default function FooterSection() {
             </span>
           </div>
 
-          {/* Contact CTAs under the title */}
           <div className="footer-reveal" style={{
             display: 'flex',
             gap: '1rem',
@@ -81,7 +75,6 @@ export default function FooterSection() {
         </div>
       </div>
 
-      {/* TruckNRoll accent rail */}
       <div style={{
         background: 'var(--accent)',
         color: 'var(--bg)',
@@ -108,7 +101,6 @@ export default function FooterSection() {
         </div>
       </div>
 
-      {/* Footer grid */}
       <div className="container" style={{
         paddingTop: 'var(--space-2xl)',
         paddingBottom: 'var(--space-lg)',

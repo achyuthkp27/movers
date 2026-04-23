@@ -4,10 +4,6 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 
-/**
- * TRIONN-style marquee — counter-scrolling rows
- * with massive compressed typography (letter-spacing: -0.06em)
- */
 export default function MarqueeSection() {
   const ref = useRef(null);
 

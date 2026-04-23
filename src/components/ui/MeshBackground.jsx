@@ -38,7 +38,6 @@ export default function MeshBackground() {
         filter: 'blur(100px)',
       }}
     >
-      {/* Dynamic Liquid Blobs */}
       <div className="mesh-blob" style={{
         position: 'absolute',
         top: '20%',

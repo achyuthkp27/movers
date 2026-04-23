@@ -3,13 +3,12 @@
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import FooterSection from '@/components/sections/FooterSection';
+
 
 export default function NotFound() {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    // A simple, cinematic entry animation
     gsap.fromTo(
       '.not-found-text',
       { opacity: 0, y: 30 },
@@ -35,7 +34,6 @@ export default function NotFound() {
           color: 'var(--fg)',
         }}
       >
-        {/* Giant background text for aesthetic */}
         <div 
           className="not-found-text"
           style={{

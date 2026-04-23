@@ -4,8 +4,6 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 import { gsap } from '@/lib/gsapConfig';
 import FooterSection from '@/components/sections/FooterSection';
-import { assetPath } from '@/lib/basePath';
-
 export default function WorkContent({ data }) {
   const router = useRouter();
   const containerRef = useRef(null);
@@ -25,7 +23,6 @@ export default function WorkContent({ data }) {
       <main ref={containerRef} style={{ minHeight: '100vh', paddingTop: '15vh' }}>
         <div className="container" style={{ paddingBottom: '5rem' }}>
           
-          {/* Back Button */}
           <button 
             className="detail-animate"
             onClick={() => router.back()}
@@ -47,7 +44,6 @@ export default function WorkContent({ data }) {
             ← Back to Work
           </button>
 
-          {/* Title */}
           <h1 
             className="detail-animate"
             style={{ 
@@ -60,7 +56,6 @@ export default function WorkContent({ data }) {
             {data.title}
           </h1>
 
-          {/* Hero Image */}
           <div 
             className="detail-animate"
             style={{
@@ -82,7 +77,6 @@ export default function WorkContent({ data }) {
             />
           </div>
 
-          {/* Description Content */}
           <div 
             className="detail-animate"
             style={{
@@ -95,7 +89,6 @@ export default function WorkContent({ data }) {
             </p>
           </div>
 
-          {/* New Content: Challenge & Solution Section */}
           <div className="detail-animate" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', marginTop: '5rem' }}>
             <div>
               <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', marginBottom: '1.5rem' }}>The Challenge</h2>
@@ -107,7 +100,6 @@ export default function WorkContent({ data }) {
             </div>
           </div>
 
-          {/* New Content: Results Section */}
           <div className="detail-animate" style={{ marginTop: '8rem', padding: '4rem', background: 'var(--accent)', color: 'var(--bg)', borderRadius: 'var(--radius-lg)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '2rem' }}>
               <div>
@@ -124,7 +116,6 @@ export default function WorkContent({ data }) {
             </div>
           </div>
 
-          {/* New Content: CTA Section */}
           <div className="detail-animate" style={{ marginTop: '10rem', textAlign: 'center' }}>
             <p style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)', fontSize: '0.8rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>Interested in a similar result?</p>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '3rem' }}>Let's plan your <br/> perfect move together.</h2>

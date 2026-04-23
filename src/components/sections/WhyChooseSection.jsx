@@ -39,9 +39,7 @@ export default function WhyChooseSection() {
   const ref = useRef(null);
 
   useGSAP(() => {
-      // Animate each advantage item
       gsap.utils.toArray('.advantage-item').forEach((el, i) => {
-        // Content reveal
         gsap.fromTo(el, {
           opacity: 0, y: 40,
         }, {
@@ -53,7 +51,6 @@ export default function WhyChooseSection() {
         });
       });
 
-      // Section title reveal
       gsap.utils.toArray('.why-title-line').forEach((el, i) => {
         gsap.fromTo(el, {
           clipPath: 'inset(0 0 100% 0)',
@@ -72,7 +69,6 @@ export default function WhyChooseSection() {
   return (
     <section ref={ref} className="section" id="why-us">
       <div className="container">
-        {/* Section title with text reveal */}
         <div className="section-title">
           <div className="section-title__left">
             <Reveal as="h3" style={{ color: 'var(--fg)' }}>
@@ -93,7 +89,6 @@ export default function WhyChooseSection() {
           </div>
         </div>
 
-        {/* Advantage grid */}
         <div className="grid-2" style={{ gap: 'var(--space-md)' }}>
           {advantages.map((a, i) => (
             <div key={i} className="advantage-item glass-premium" style={{ 
@@ -106,14 +101,12 @@ export default function WhyChooseSection() {
               opacity: 0,
             }}>
               <div>
-                {/* Number + Title */}
                 <div style={{
                   display: 'flex',
                   alignItems: 'flex-start',
                   gap: '1.25rem',
                   marginBottom: 'var(--space-md)',
                 }}>
-                  {/* Number */}
                   <span className="text-mono" style={{ 
                     color: 'var(--accent)', 
                     fontSize: '0.75rem',
@@ -124,7 +117,6 @@ export default function WhyChooseSection() {
                   </span>
 
                   <div style={{ flex: 1 }}>
-                    {/* Title */}
                     <Reveal as="h3" className="text-heading-sm" style={{
                       lineHeight: 1,
                       marginBottom: 'var(--space-sm)',
@@ -132,7 +124,6 @@ export default function WhyChooseSection() {
                       {a.title}
                     </Reveal>
 
-                    {/* Description */}
                     <p className="text-body" style={{ maxWidth: '22rem', color: 'var(--fg-subtle)' }}>
                       {a.desc}
                     </p>
@@ -140,7 +131,6 @@ export default function WhyChooseSection() {
                 </div>
               </div>
 
-              {/* Stat */}
               <div style={{
                 display: 'flex',
                 alignItems: 'baseline',
