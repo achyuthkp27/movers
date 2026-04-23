@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ['three'],
+  output: 'export',
   images: {
-    domains: [],
+    unoptimized: true,
   },
+  transpilePackages: ['three'],
 };
 
 export default nextConfig;
