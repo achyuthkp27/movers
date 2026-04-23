@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SwiftMove® — Moving Experiences, Not Just Packages
 
-## Getting Started
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
+[![GSAP](https://img.shields.io/badge/Animations-GSAP-green?logo=greensock)](https://greensock.com/gsap/)
+[![Awwwards](https://img.shields.io/badge/Design-Premium-gold)](https://www.awwwards.com/)
 
-First, run the development server:
+SwiftMove is a production-grade, ultra-premium logistics and relocation platform designed for the next generation of movers. Inspired by Awwwards-winning agency designs, the platform combines cinematic motion, WebGL interactive effects, and a high-end glassmorphism aesthetic to redefine the moving experience.
 
+---
+
+## ✨ Key Features
+
+### 🎬 Cinematic Motion System
+- **GSAP-Powered Entrance**: Scroll-triggered character swaps, slide-rotate reveals, and staggered entrance animations.
+- **Magnetic UI**: Tactile buttons and cards that respond to cursor proximity for a physical, premium feel.
+- **Shape Masking**: Advanced `clip-path` image reveals that grow and expand during scroll.
+
+### 🌌 Visual Experience
+- **Liquid Mesh Aura**: A global background system featuring slow-moving, animated liquid glows for constant depth.
+- **Interactive Fluid Simulation**: A WebGL "smoke" effect that follows the user's cursor across every page.
+- **Glassmorphism 2.0**: A design system built on high-end translucency, saturation boosts, and multi-layered shadows.
+- **Dynamic Loader**: A custom-animated truck sequence with real-time loading progress tracking.
+
+### 🛠 Technical Excellence
+- **Global Layout Architecture**: Centralized persistent UI (Custom Cursor, Fluid Simulation, Navbar) in `RootLayout` for seamless route transitions.
+- **SEO Optimized**: Fully implemented structured data, semantic HTML5, and automated metadata for logistics keywords.
+- **Performance Focused**: Efficient GSAP orchestration and mobile-optimized WebGL simulations to maintain high FPS.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18.x or higher
+- npm, yarn, or pnpm
+
+### Installation
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/achyuthkp27/movers.git
+cd movers
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Production Build
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📂 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `/src/app`: Next.js 15 App Router pages and global layout.
+- `/src/components`: UI components, section-based layouts, and smart interactive elements.
+- `/src/providers`: Client-side providers for GSAP, Lenis Smooth Scroll, and Theme Management.
+- `/src/lib`: Core configurations for GSAP and third-party libraries.
+- `/public`: High-resolution assets and service-specific media.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🏆 Designed for Excellence
+SwiftMove is built to showcase what happens when precision handling meets digital transparency. From the first load to the final scroll, every interaction is designed to feel intentional, premium, and trustworthy.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Built by [Achyuth KP](https://github.com/achyuthkp27) & Antigravity AI**
