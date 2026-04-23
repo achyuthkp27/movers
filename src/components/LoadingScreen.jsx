@@ -38,6 +38,7 @@ export default function LoadingScreen() {
         current = Math.min(current + increment, isLoaded ? 100 : 95);
       }
       
+      current = Math.min(current, 100);
       setProgress(Math.round(current));
       
       if (current < 100) {

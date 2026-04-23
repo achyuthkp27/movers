@@ -1,15 +1,9 @@
 'use client';
 import Reveal from '@/components/ui/Reveal';
-
-
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 
-/**
- * "Why SwiftMove" — TruckNRoll c-grid-list + TRIONN editorial style
- * Replaces pricing. Showcases competitive advantages.
- */
 const advantages = [
   {
     num: '01',
@@ -47,25 +41,15 @@ export default function WhyChooseSection() {
   useGSAP(() => {
       // Animate each advantage item
       gsap.utils.toArray('.advantage-item').forEach((el, i) => {
-        // Border reveal
-        const border = el.querySelector('.advantage-border');
-        if (border) {
-          gsap.fromTo(border, { scaleX: 0 }, {
-            scaleX: 1, duration: 0.8,
-            ease: 'power3.inOut',
-            delay: i * 0.06,
-            scrollTrigger: { trigger: el, start: 'top 85%' },
-          });
-        }
-
         // Content reveal
-        gsap.fromTo(el.querySelector('.advantage-content'), {
+        gsap.fromTo(el, {
           opacity: 0, y: 40,
         }, {
           opacity: 1, y: 0,
-          duration: 0.7,
-          delay: 0.15 + i * 0.06,
-          scrollTrigger: { trigger: el, start: 'top 80%' },
+          duration: 1,
+          delay: i * 0.1,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 85%' },
         });
       });
 
@@ -110,90 +94,70 @@ export default function WhyChooseSection() {
         </div>
 
         {/* Advantage grid */}
-        <div className="grid-2" style={{ gap: 0 }}>
+        <div className="grid-2" style={{ gap: 'var(--space-md)' }}>
           {advantages.map((a, i) => (
-            <div key={i} className="advantage-item" style={{ padding: 0 }}>
-              {/* Top border */}
-              <div className="advantage-border" style={{
-                width: '100%', height: '1px',
-                background: 'currentColor',
-                transformOrigin: '0 0',
-                opacity: 0.12,
-              }} />
-
-              <div className="advantage-content" style={{
-                padding: 'var(--space-lg)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                minHeight: 'clamp(14rem, 20vw, 20rem)',
-                opacity: 0,
-              }}>
-                <div>
-                  {/* Number + Title */}
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '1.25rem',
-                    marginBottom: 'var(--space-md)',
-                  }}>
-                    {/* Number */}
-                    <span className="text-small" style={{ 
-                      color: 'var(--fg-subtle)', 
-                      whiteSpace: 'nowrap',
-                      marginTop: '0.45em',
-                      lineHeight: 1,
-                      flexShrink: 0,
-                    }}>
-                      ({a.num})
-                    </span>
-
-                    <div style={{ flex: 1 }}>
-                      {/* Title */}
-                      <Reveal as="h3" className="text-heading-sm" style={{
-                        lineHeight: 1,
-                        marginBottom: 'var(--space-sm)',
-                      }}>
-                        {a.title}
-                      </Reveal>
-
-                      {/* Description */}
-                      <p className="text-body" style={{ maxWidth: '22rem' }}>
-                        {a.desc}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Stat */}
+            <div key={i} className="advantage-item glass-premium" style={{ 
+              padding: 'var(--space-xl)',
+              borderRadius: 'var(--radius-lg)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              minHeight: 'clamp(15rem, 20vw, 22rem)',
+              opacity: 0,
+            }}>
+              <div>
+                {/* Number + Title */}
                 <div style={{
                   display: 'flex',
-                  alignItems: 'baseline',
-                  gap: '0.5rem',
-                  marginTop: 'var(--space-md)',
+                  alignItems: 'flex-start',
+                  gap: '1.25rem',
+                  marginBottom: 'var(--space-md)',
                 }}>
-                  <span style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(1.8rem, 1.2rem + 1.5vw, 3rem)',
-                    fontWeight: 700,
-                    letterSpacing: '-0.03em',
-                    lineHeight: 0.9,
-                    color: 'var(--accent)',
-                  }}>{a.stat}</span>
-                  <span className="text-small">{a.statLabel}</span>
+                  {/* Number */}
+                  <span className="text-mono" style={{ 
+                    color: 'var(--accent)', 
+                    fontSize: '0.75rem',
+                    opacity: 0.6,
+                    marginTop: '0.45em',
+                  }}>
+                    {a.num}
+                  </span>
+
+                  <div style={{ flex: 1 }}>
+                    {/* Title */}
+                    <Reveal as="h3" className="text-heading-sm" style={{
+                      lineHeight: 1,
+                      marginBottom: 'var(--space-sm)',
+                    }}>
+                      {a.title}
+                    </Reveal>
+
+                    {/* Description */}
+                    <p className="text-body" style={{ maxWidth: '22rem', color: 'var(--fg-subtle)' }}>
+                      {a.desc}
+                    </p>
+                  </div>
                 </div>
+              </div>
+
+              {/* Stat */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'baseline',
+                gap: '0.5rem',
+                marginTop: 'var(--space-md)',
+              }}>
+                <span className="text-display" style={{
+                  fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+                  color: 'var(--accent)',
+                  lineHeight: 1
+                }}>{a.stat}</span>
+                <span className="text-mono" style={{ fontSize: '0.65rem', opacity: 0.5, letterSpacing: '0.1em' }}>{a.statLabel.toUpperCase()}</span>
               </div>
             </div>
           ))}
         </div>
-
-        {/* Bottom border */}
-        <div style={{
-          width: '100%', height: '1px',
-          background: 'currentColor', opacity: 0.12,
-        }} />
       </div>
-
     </section>
   );
 }

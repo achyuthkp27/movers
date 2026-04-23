@@ -4,7 +4,6 @@ import ParallaxImage from '@/components/ui/ParallaxImage';
 import Image from 'next/image';
 import Link from 'next/link';
 
-
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
@@ -43,28 +42,42 @@ export default function ServicesSection() {
           scaleX: 0,
         }, {
           scaleX: 1,
-          duration: 0.8,
-          ease: 'power3.inOut',
+          duration: 1,
+          ease: 'power4.inOut',
           scrollTrigger: {
             trigger: el,
-            start: 'top 80%',
+            start: 'top 85%',
           },
         });
 
-        // Content stagger
+        // Content reveal
         gsap.fromTo(el.querySelector('.service-content'), {
           opacity: 0, y: 30,
         }, {
           opacity: 1, y: 0,
-          duration: 0.6,
-          delay: 0.2,
-          scrollTrigger: { trigger: el, start: 'top 75%' },
+          duration: 0.8,
+          delay: 0.1,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 80%' },
+        });
+
+        // Image Mask Reveal
+        gsap.fromTo(el.querySelector('.service-image-mask'), {
+          clipPath: 'inset(100% 0% 0% 0%)'
+        }, {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 1.4,
+          ease: 'power4.inOut',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 70%',
+          }
         });
       });
     }, { scope: ref });
 
   return (
-    <section ref={ref} className="section" id="services">
+    <section ref={ref} className="section" id="services" style={{ paddingBottom: 'var(--space-3xl)' }}>
       <div className="container">
         {/* TRIONN section title */}
         <div className="section-title">
@@ -84,7 +97,7 @@ export default function ServicesSection() {
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: 'var(--space-lg)',
+          gap: 'var(--space-2xl)',
         }}>
           {services.map((s, i) => (
             <div key={i} className="service-item" style={{
@@ -96,61 +109,63 @@ export default function ServicesSection() {
                 background: 'var(--fg)',
                 transformOrigin: '0 0',
                 opacity: 0.15,
-                marginBottom: 'var(--space-md)',
+                marginBottom: 'var(--space-lg)',
               }} />
 
               <div className="service-content" style={{
                 display: 'flex',
-                alignItems: 'flex-start',
+                flexDirection: 'column',
                 gap: '1.5rem',
               }}>
-                {/* Number */}
-                <span className="text-small" style={{ 
-                  color: 'var(--fg-subtle)', 
-                  whiteSpace: 'nowrap',
-                  marginTop: '0.45em',
-                  lineHeight: 1,
-                  flexShrink: 0,
-                }}>
-                  ({s.num})
-                </span>
-
-                <div style={{ flex: 1 }}>
-                  {/* Title */}
-                  <Reveal as="h3" className="text-heading-md" style={{
+                <div style={{ display: 'flex', gap: '1.5rem' }}>
+                  {/* Number */}
+                  <span className="text-small" style={{ 
+                    color: 'var(--fg-subtle)', 
+                    whiteSpace: 'nowrap',
+                    marginTop: '0.45em',
                     lineHeight: 1,
-                    marginBottom: 'var(--space-sm)',
+                    flexShrink: 0,
                   }}>
-                    {s.title}
-                  </Reveal>
+                    ({s.num})
+                  </span>
 
-                  {/* Description */}
-                  <p className="text-body" style={{ maxWidth: '25rem', marginBottom: 'var(--space-md)' }}>
-                    {s.desc}
-                  </p>
-
-                  {/* Visual card */}
-                  <Link href={`/services/${s.slug}`} style={{ display: 'block' }}>
-                    <div data-cursor="view" style={{
-                      aspectRatio: '4.3/3',
-                      maxWidth: '21.875rem',
-                      borderRadius: 'var(--radius-xs) var(--radius-xs) var(--radius-lg) var(--radius-xs)',
-                      border: '1px solid var(--border)',
-                      position: 'relative',
-                      overflow: 'hidden',
+                  <div style={{ flex: 1 }}>
+                    {/* Title */}
+                    <Reveal as="h3" className="text-heading-md" style={{
+                      lineHeight: 1,
+                      marginBottom: 'var(--space-sm)',
                     }}>
-                      <ParallaxImage speed={15}>
-                        <Image 
-                          src={s.src} 
-                          alt={s.title.replace('\n', ' ')} 
-                          fill
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          style={{ objectFit: 'cover' }}
-                        />
-                      </ParallaxImage>
-                    </div>
-                  </Link>
+                      {s.title}
+                    </Reveal>
+
+                    {/* Description */}
+                    <p className="text-body" style={{ maxWidth: '25rem', marginBottom: 'var(--space-md)', color: 'var(--fg-subtle)' }}>
+                      {s.desc}
+                    </p>
+                  </div>
                 </div>
+
+                {/* Visual card with Mask */}
+                <Link href={`/services/${s.slug}`} style={{ display: 'block' }}>
+                  <div className="service-image-mask" data-cursor="view" style={{
+                    aspectRatio: '16/10',
+                    width: '100%',
+                    borderRadius: 'var(--radius-md)',
+                    border: '1px solid var(--border)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}>
+                    <ParallaxImage speed={15}>
+                      <Image 
+                        src={s.src} 
+                        alt={s.title} 
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </ParallaxImage>
+                  </div>
+                </Link>
               </div>
             </div>
           ))}
