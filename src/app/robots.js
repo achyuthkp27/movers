@@ -13,6 +13,6 @@ export default function robots() {
         allow: '/',
       },
     ],
-    sitemap: 'https://swiftmove.local/sitemap.xml',
+    sitemap: 'https://basaveshwarapackers.in/sitemap.xml',
   };
 }

@@ -1,5 +1,6 @@
 'use client';
 import Reveal from '@/components/ui/Reveal';
+import Link from 'next/link';
 
 
 import { useRef } from 'react';
@@ -67,17 +68,19 @@ export default function StorySection() {
           marginLeft: 'auto',
         }}>
           <div>
+            <p className="text-body" style={{ marginBottom: '1rem' }}>
+              Basaveshwara Packers & Movers is a trusted name for packers and movers in Doddaballapur and nearby areas. We provide reliable house shifting, packing, loading, and unloading services at affordable prices.
+            </p>
             <p className="text-body">
-              As a next-generation moving company, SwiftMove<sup>®</sup> transcends 
-              traditional logistics, crafting your relocation into an experience 
-              that&apos;s seamless and stress-free.
+              Our experienced team ensures safe and secure transportation of your household goods across Karnataka. Whether you are shifting locally or to another city, we offer complete relocation solutions.
             </p>
           </div>
           <div>
+            <p className="text-body" style={{ marginBottom: '1rem' }}>
+              Our office is located in Bashettihalli, Doddaballapur, but we provide expert moving services in <Link href="/packers-and-movers-in-bangalore" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>Bangalore</Link>, <Link href="/packers-and-movers-in-yelahanka" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>Yelahanka</Link>, <Link href="/packers-and-movers-in-devanahalli" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>Devanahalli</Link>, and <Link href="/packers-and-movers-in-doddaballapur" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>Doddaballapur</Link>. <b>Our services are available all over Karnataka.</b>
+            </p>
             <p className="text-body">
-              We move with precision, staying connected with real-time tracking 
-              and AI-powered planning to make your transition effortless. Every 
-              item handled with care. Every deadline met.
+              Call us now for fast and hassle-free moving services.
             </p>
             <a href="#services" className="btn-outline" style={{ marginTop: 'var(--space-md)' }}>
               Our services

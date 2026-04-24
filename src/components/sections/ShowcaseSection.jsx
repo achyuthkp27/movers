@@ -99,7 +99,7 @@ export default function ShowcaseSection() {
         >
           <img 
             src={assetPath('/gallery/move-1.png')} 
-            alt="SwiftMove Showcase" 
+            alt="Basaveshwara Showcase" 
             style={{
               width: '100%',
               height: '100%',

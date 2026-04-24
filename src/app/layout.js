@@ -21,25 +21,25 @@ const dmMono = DM_Mono({
 });
 
 export const metadata = {
-  title: "SwiftMove® — Moving Experiences, Not Just Packages",
+  title: "Packers and Movers in Karnataka | Basaveshwara Packers & Movers",
   description:
-    "Next-generation packers and movers. Premium relocation services with real-time tracking, AI-powered estimates, and white-glove care. Book your move today.",
-  keywords: "packers and movers, relocation, moving company, home shifting, office relocation, vehicle transport",
+    "Looking for reliable packers and movers in Karnataka? Basaveshwara Packers & Movers offers safe house shifting, packing, loading & transportation services all over Karnataka.",
+  keywords: "packers and movers in bangalore, packers and movers in doddaballapur, house shifting services in bangalore, local packers and movers near me, affordable packers and movers karnataka, domestic shifting services karnataka, household goods shifting services",
   robots: "index, follow",
   openGraph: {
-    title: "SwiftMove® — Moving Experiences, Not Just Packages",
-    description: "Next-generation packers and movers with premium service.",
+    title: "Packers and Movers in Karnataka | Basaveshwara Packers & Movers",
+    description: "Reliable house shifting, packing, loading, and unloading services in Bangalore and all over Karnataka.",
     type: "website",
-    url: "https://swiftmove.local",
+    url: "https://basaveshwarapackers.in",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SwiftMove® — Premium Moving Services",
-    description: "Real-time tracking, AI estimates, white-glove care.",
+    title: "Packers and Movers in Bangalore | Basaveshwara Packers & Movers",
+    description: "Reliable house shifting, packing, loading, and unloading services in Bangalore and all over Karnataka.",
   },
   alternates: {
-    canonical: "https://swiftmove.local",
+    canonical: "https://basaveshwarapackers.in",
   },
 };
 

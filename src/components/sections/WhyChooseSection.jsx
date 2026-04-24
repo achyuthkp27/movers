@@ -76,7 +76,7 @@ export default function WhyChooseSection() {
                 <span className="why-title-line" style={{ display: 'block' }}>why</span>
               </span>
               <span style={{ display: 'block', overflow: 'hidden' }}>
-                <span className="why-title-line" style={{ display: 'block' }}>swiftmove</span>
+                <span className="why-title-line" style={{ display: 'block' }}>basaveshwara</span>
               </span>
             </Reveal>
           </div>

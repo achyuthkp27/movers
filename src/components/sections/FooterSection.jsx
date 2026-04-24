@@ -4,6 +4,8 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsapConfig';
 
+import Link from 'next/link';
+
 export default function FooterSection() {
   const ref = useRef(null);
 
@@ -58,7 +60,7 @@ export default function FooterSection() {
             marginTop: 'var(--space-lg)',
             flexWrap: 'wrap',
           }}>
-            <a href="https://wa.me/911800123456?text=Hi%2C%20I%20want%20to%20book%20a%20move"
+            <a href="https://wa.me/918660616322?text=Hi%2C%20I%20want%20to%20book%20a%20move"
               target="_blank" rel="noopener noreferrer"
               className="btn-primary"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
@@ -68,8 +70,11 @@ export default function FooterSection() {
               </svg>
               WhatsApp Us
             </a>
-            <a href="tel:+911800123456" className="btn-outline">
-              📞 +91 1800 123 456
+            <a href="tel:+918660616322" className="btn-outline">
+              📞 Call Manju
+            </a>
+            <a href="tel:+918970980231" className="btn-outline">
+              📞 Call Shivu
             </a>
           </div>
         </div>
@@ -95,7 +100,7 @@ export default function FooterSection() {
               textTransform: 'uppercase',
               paddingRight: 'clamp(2rem, 4vw, 4rem)',
             }}>
-              SwiftMove® — Premium Relocation — WhatsApp: +91 1800 123 456
+              Basaveshwara Packers & Movers — All over Karnataka Services Available — Manju: 86606 16322 — Shivu: 89709 80231
             </span>
           ))}
         </div>
@@ -105,7 +110,7 @@ export default function FooterSection() {
         paddingTop: 'var(--space-2xl)',
         paddingBottom: 'var(--space-lg)',
       }}>
-        <div className="footer-reveal grid-3" style={{
+        <div className="footer-reveal grid-4" style={{
           gap: 'var(--space-lg)',
           paddingBottom: 'var(--space-2xl)',
           borderBottom: '1px solid var(--border)',
@@ -128,18 +133,22 @@ export default function FooterSection() {
 
           <div>
             <div className="text-small" style={{ marginBottom: 'var(--space-sm)' }}>Contact</div>
-            <a href="https://wa.me/911800123456" target="_blank" rel="noopener noreferrer" style={{
+            <a href="https://wa.me/918660616322" target="_blank" rel="noopener noreferrer" style={{
               display: 'block', fontSize: 'clamp(0.85rem, 0.75rem + 0.3vw, 1.1rem)',
               color: 'var(--fg-muted)', padding: '4px 0',
-            }}>WhatsApp</a>
-            <a href="tel:+911800123456" style={{
+            }}>WhatsApp Manju</a>
+            <a href="tel:+918660616322" style={{
               display: 'block', fontSize: 'clamp(0.85rem, 0.75rem + 0.3vw, 1.1rem)',
               color: 'var(--fg-muted)', padding: '4px 0',
-            }}>+91 1800 123 456</a>
-            <a href="mailto:hello@swiftmove.in" style={{
+            }}>Manju: +91 86606 16322</a>
+            <a href="tel:+918970980231" style={{
               display: 'block', fontSize: 'clamp(0.85rem, 0.75rem + 0.3vw, 1.1rem)',
               color: 'var(--fg-muted)', padding: '4px 0',
-            }}>hello@swiftmove.in</a>
+            }}>Shivu: +91 89709 80231</a>
+            <a href="mailto:info@basaveshwarapackers.in" style={{
+              display: 'block', fontSize: 'clamp(0.85rem, 0.75rem + 0.3vw, 1.1rem)',
+              color: 'var(--fg-muted)', padding: '4px 0',
+            }}>info@basaveshwarapackers.in</a>
           </div>
 
           <div>
@@ -155,6 +164,27 @@ export default function FooterSection() {
               >{s}</a>
             ))}
           </div>
+
+          <div>
+            <div className="text-small" style={{ marginBottom: 'var(--space-sm)' }}>Service Areas</div>
+            {[
+              { label: 'Packers and movers in Bangalore', path: 'bangalore' },
+              { label: 'Packers and movers in Doddaballapur', path: 'doddaballapur' },
+              { label: 'Packers and movers in Yelahanka', path: 'yelahanka' },
+              { label: 'Packers and movers in Devanahalli', path: 'devanahalli' }
+            ].map(loc => (
+              <Link key={loc.path} href={`/packers-and-movers-in-${loc.path}`} style={{
+                display: 'block',
+                fontSize: 'clamp(0.85rem, 0.75rem + 0.3vw, 1.1rem)',
+                color: 'var(--fg-muted)',
+                padding: '4px 0',
+                transition: 'color var(--duration-fast)',
+              }}
+                onMouseEnter={e => e.target.style.color = 'var(--accent)'}
+                onMouseLeave={e => e.target.style.color = 'var(--fg-muted)'}
+              >{loc.label}</Link>
+            ))}
+          </div>
         </div>
 
         <div className="footer-reveal" style={{
@@ -165,7 +195,7 @@ export default function FooterSection() {
           paddingBottom: 'var(--space-md)',
         }}>
           <div className="text-small" style={{ color: 'var(--fg-subtle)' }}>
-            © {new Date().getFullYear()} SwiftMove®. All rights reserved.
+            © {new Date().getFullYear()} Basaveshwara Packers & Movers. All rights reserved.
           </div>
           <button onClick={scrollTop} className="btn-outline" style={{ padding: '0.5rem 1.25rem', fontSize: '0.7rem' }}>
             Back to top ↑

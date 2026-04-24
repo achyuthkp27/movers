@@ -2,30 +2,30 @@ export default function StructuredData() {
   const businessSchema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'SwiftMove®',
-    description: 'Premium packers and movers with real-time tracking and AI-powered estimates',
-    url: 'https://swiftmove.local',
-    telephone: '+1-800-123-4567',
+    name: 'Basaveshwara Packers & Movers',
+    description: 'Specialist in House Hold Goods & Domestic goods Shifting Services',
+    url: 'https://basaveshwarapackers.in',
+    telephone: '+91-86606-16322',
     areaServed: [
       {
         '@type': 'City',
-        name: 'Mumbai',
+        name: 'Doddaballapur',
       },
       {
         '@type': 'City',
         name: 'Bangalore',
       },
       {
-        '@type': 'City',
-        name: 'Delhi',
+        '@type': 'State',
+        name: 'Karnataka',
       },
     ],
     sameAs: [
-      'https://www.facebook.com/swiftmove',
-      'https://www.instagram.com/swiftmove',
-      'https://www.linkedin.com/company/swiftmove',
+      'https://www.facebook.com/basaveshwarapackers',
+      'https://www.instagram.com/basaveshwarapackers',
+      'https://www.linkedin.com/company/basaveshwarapackers',
     ],
-    image: 'https://swiftmove.local/logo.png',
+    image: 'https://basaveshwarapackers.in/logo.png',
     priceRange: '$',
     aggregateRating: {
       '@type': 'AggregateRating',
@@ -37,12 +37,12 @@ export default function StructuredData() {
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Professional Moving Services',
+    name: 'House Hold & Domestic Shifting Services',
     provider: {
       '@type': 'LocalBusiness',
-      name: 'SwiftMove®',
+      name: 'Basaveshwara Packers & Movers',
     },
-    description: 'Premium relocation and moving services with white-glove care',
+    description: 'Specialist in House Hold Goods & Domestic goods Shifting Services',
     areaServed: 'IN',
     hasOfferCatalog: {
       '@type': 'OfferCatalog',

@@ -55,7 +55,7 @@ export default function BookingSection() {
         pointerEvents: 'none',
         zIndex: 0
       }}>
-        CONTACT SWIFTMOVE CONTACT SWIFTMOVE
+        CONTACT BASAVESHWARA CONTACT BASAVESHWARA
       </div>
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
@@ -82,7 +82,7 @@ export default function BookingSection() {
           gap: 'var(--space-md)',
         }}>
           <Magnetic strength={0.08}>
-            <a href="https://wa.me/911800123456?text=Hi%2C%20I%20need%20help%20with%20my%20move"
+            <a href="https://wa.me/918660616322?text=Hi%2C%20I%20need%20help%20with%20my%20move"
               target="_blank" rel="noopener noreferrer"
               className="contact-content glass-premium"
               style={{
@@ -126,7 +126,7 @@ export default function BookingSection() {
           </Magnetic>
 
           <Magnetic strength={0.08}>
-            <a href="tel:+911800123456"
+            <a href="tel:+918660616322"
               className="contact-content glass-premium"
               style={{
                 borderRadius: 'var(--radius-lg)',
@@ -163,8 +163,9 @@ export default function BookingSection() {
                 </p>
               </div>
               <div>
-                <div className="text-heading-sm" style={{ color: 'var(--accent)', marginBottom: '4px' }}>1800 123 456</div>
-                <div className="text-mono" style={{ fontSize: '0.65rem', opacity: 0.5 }}>TOLL-FREE 24/7</div>
+                <div className="text-heading-sm" style={{ color: 'var(--accent)', marginBottom: '4px' }}>Manju: 86606 16322</div>
+                <div className="text-heading-sm" style={{ color: 'var(--accent)', marginBottom: '4px' }}>Shivu: 89709 80231</div>
+                <div className="text-mono" style={{ fontSize: '0.65rem', opacity: 0.5 }}>AVAILABLE 24x7</div>
               </div>
             </a>
           </Magnetic>
@@ -202,7 +203,7 @@ export default function BookingSection() {
                 </p>
               </div>
               <div className="text-mono" style={{ fontSize: '0.7rem', opacity: 0.5 }}>
-                BANGALORE, HSR LAYOUT
+                BASHETTIHALLI, DODDABALLAPUR - 561203
               </div>
             </div>
           </Magnetic>

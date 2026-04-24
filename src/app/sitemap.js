@@ -1,7 +1,7 @@
 export const dynamic = 'force-static';
 
 export default function sitemap() {
-  const baseUrl = 'https://swiftmove.local';
+  const baseUrl = 'https://basaveshwarapackers.in';
 
   return [
     {

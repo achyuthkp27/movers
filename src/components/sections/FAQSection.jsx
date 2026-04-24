@@ -118,7 +118,7 @@ export default function FAQSection() {
           <div className="section-title__right">
             <h4 className="text-body" style={{ color: 'var(--fg-muted)' }}>
               Everything you need to know about<br />
-              moving with SwiftMove. Clear, simple,<br />
+              moving with Basaveshwara Packers. Clear, simple,<br />
               and transparent.
             </h4>
           </div>

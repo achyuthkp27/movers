@@ -81,7 +81,7 @@ export default function Navbar() {
             letterSpacing: '-0.01em',
             lineHeight: 1,
           }}>
-            SwiftMove<sup style={{ fontSize: '50%', top: '-0.65em' }}>®</sup>
+            Basaveshwara Packers
           </Link>
 
           <nav className="nav-desktop">
@@ -184,7 +184,7 @@ export default function Navbar() {
         ))}
 
         <div style={{ display: 'flex', gap: '1rem', marginTop: 'var(--space-md)' }}>
-          <a href="https://wa.me/911800123456" target="_blank" rel="noopener noreferrer"
+          <a href="https://wa.me/918660616322" target="_blank" rel="noopener noreferrer"
             className="btn-primary" onClick={() => setMenuOpen(false)}
             style={{ fontSize: '0.85rem' }}>
             WhatsApp Us

@@ -163,13 +163,18 @@ export default function ServiceContent({ data }) {
             <h2 className="text-heading-xl" style={{ marginBottom: 'var(--space-xl)' }}>Ready to move?</h2>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-md)', flexWrap: 'wrap' }}>
               <Magnetic>
-                <a href="https://wa.me/911800123456" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '1.25rem 3rem' }}>
-                  WhatsApp Quote
+                <a href="https://wa.me/918660616322" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '1.25rem 3rem' }}>
+                  WhatsApp Manju
                 </a>
               </Magnetic>
               <Magnetic>
-                <a href="tel:+911800123456" className="btn-outline" style={{ padding: '1.25rem 3rem' }}>
-                  Call Coordinator
+                <a href="tel:+918660616322" className="btn-outline" style={{ padding: '1.25rem 3rem' }}>
+                  Call Manju
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a href="tel:+918970980231" className="btn-outline" style={{ padding: '1.25rem 3rem' }}>
+                  Call Shivu
                 </a>
               </Magnetic>
             </div>

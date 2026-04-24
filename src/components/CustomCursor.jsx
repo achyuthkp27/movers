@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSoundEffects } from '@/hooks/useSoundEffects';
 
 export default function CustomCursor() {
@@ -11,8 +11,7 @@ export default function CustomCursor() {
   const rafId = useRef(null);
   const state = useRef({ type: 'default', text: '' });
   const { playHover, playClick } = useSoundEffects();
-  const isTouchDevice = useRef(false);
-  const prefersReducedMotion = useRef(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
     const checkTouchDevice = () => {
@@ -22,14 +21,19 @@ export default function CustomCursor() {
         (navigator.msMaxTouchPoints > 0)
       );
     };
-    isTouchDevice.current = checkTouchDevice();
+    const isTouch = checkTouchDevice();
+    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    prefersReducedMotion.current = mediaQuery.matches;
-
-    if (isTouchDevice.current || prefersReducedMotion.current) {
+    if (isTouch || isReduced) {
+      setHidden(true);
       return;
     }
+
+    // Fallback: If a touch event happens later, unmount immediately
+    const onTouchStart = () => {
+      setHidden(true);
+    };
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
 
     const cursor = cursorRef.current;
     const textEl = textRef.current;
@@ -113,16 +117,24 @@ export default function CustomCursor() {
         el.removeEventListener('click', onClickHoverable);
       });
       observer.disconnect();
+      window.removeEventListener('touchstart', onTouchStart);
     };
   }, []);
 
-  if (isTouchDevice.current || prefersReducedMotion.current) {
+  if (hidden) {
     return null;
   }
 
   return (
-    <div
-      ref={cursorRef}
+    <>
+      <style>{`
+        @media (pointer: coarse), (max-width: 768px) {
+          #custom-cursor { display: none !important; }
+        }
+      `}</style>
+      <div
+        id="custom-cursor"
+        ref={cursorRef}
       aria-hidden="true"
       style={{
         position: 'fixed',
@@ -160,5 +172,6 @@ export default function CustomCursor() {
         }}
       />
     </div>
+    </>
   );
 }

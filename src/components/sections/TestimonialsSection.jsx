@@ -8,7 +8,7 @@ import { gsap } from '@/lib/gsapConfig';
 
 const testimonials = [
   {
-    quote: "SwiftMove® handled our entire office relocation without a single day of downtime. The precision was remarkable — every desk, every server rack, perfectly placed.",
+    quote: "Basaveshwara Packers handled our entire office relocation without a single day of downtime. The precision was remarkable — every desk, every server rack, perfectly placed.",
     name: 'Ravi Sharma',
     title: 'CTO, TechNova Solutions',
   },
@@ -23,7 +23,7 @@ const testimonials = [
     title: 'Entrepreneur',
   },
   {
-    quote: "Three apartments, two cities, one weekend. SwiftMove® made the impossible feel effortless. Their scheduling algorithm is genuinely impressive.",
+    quote: "Three apartments, two cities, one weekend. Basaveshwara Packers made the impossible feel effortless. Their scheduling algorithm is genuinely impressive.",
     name: 'Ananya Iyer',
     title: 'Product Manager, Flipkart',
   },

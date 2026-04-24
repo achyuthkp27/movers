@@ -8,6 +8,12 @@ export default function LoadingScreen() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    // Only run the loader once per session
+    if (typeof window !== 'undefined' && sessionStorage.getItem('bpm_loader_seen')) {
+      setVisible(false);
+      return;
+    }
+
     let frame;
     let current = 0;
     let isLoaded = document.readyState === 'complete';
@@ -34,6 +40,9 @@ export default function LoadingScreen() {
       if (current < 100) {
         frame = requestAnimationFrame(run);
       } else {
+        if (typeof window !== 'undefined') {
+          sessionStorage.setItem('bpm_loader_seen', 'true');
+        }
         setTimeout(() => {
           setExiting(true);
           setTimeout(() => setVisible(false), 800);
@@ -123,7 +132,7 @@ export default function LoadingScreen() {
                   letterSpacing="0.5"
                   opacity="0.6"
                 >
-                  SWIFT
+                  B P M
                 </text>
 
                 <path
@@ -187,8 +196,8 @@ export default function LoadingScreen() {
         </div>
 
         <div className="loader-brand">
-          <span className="loader-brand__name">SwiftMove®</span>
-          <span className="loader-brand__tagline">Loading Experience</span>
+          <span className="loader-brand__name">Basaveshwara</span>
+          <span className="loader-brand__tagline">Packers & Movers</span>
         </div>
       </div>
 

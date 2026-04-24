@@ -119,9 +119,10 @@ export default function WorkContent({ data }) {
           <div className="detail-animate" style={{ marginTop: '10rem', textAlign: 'center' }}>
             <p style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)', fontSize: '0.8rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>Interested in a similar result?</p>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '3rem' }}>Let's plan your <br/> perfect move together.</h2>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem' }}>
-              <a href="https://wa.me/911800123456" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '1.2rem 2.5rem' }}>WhatsApp Now</a>
-              <button onClick={() => router.push('/#booking')} className="btn-outline" style={{ padding: '1.2rem 2.5rem' }}>Get Started</button>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+              <a href="https://wa.me/918660616322" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '1.2rem 2.5rem' }}>WhatsApp Manju</a>
+              <a href="tel:+918660616322" className="btn-outline" style={{ padding: '1.2rem 2.5rem' }}>Call Manju</a>
+              <a href="tel:+918970980231" className="btn-outline" style={{ padding: '1.2rem 2.5rem' }}>Call Shivu</a>
             </div>
           </div>
 

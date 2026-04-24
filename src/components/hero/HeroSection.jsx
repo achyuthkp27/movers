@@ -64,6 +64,12 @@ export default function HeroSection() {
         overflow: 'hidden'
       }}
     >
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-side-accent { display: none !important; }
+        }
+      `}</style>
+
       <div className="hero-side-accent text-mono" style={{
         position: 'absolute',
         left: 'var(--space-xl)',
@@ -89,16 +95,16 @@ export default function HeroSection() {
             letterSpacing: '0.2em',
             display: 'inline-block'
           }}>
-            NEXT-GEN LOGISTICS
+            PACKERS AND MOVERS IN KARNATAKA
           </span>
         </div>
 
         <h1 className="text-display" style={{ marginBottom: 'var(--space-xl)' }}>
           <span style={{ display: 'block', overflow: 'hidden' }}>
-            <span className="hero-line" style={{ display: 'block' }}>Moving Experience,</span>
+            <span className="hero-line" style={{ display: 'block' }}>Best Packers and</span>
           </span>
           <span style={{ display: 'block', overflow: 'hidden' }}>
-            <span className="hero-line text-stroke" style={{ display: 'block' }}>Not Just Packages.</span>
+            <span className="hero-line text-stroke" style={{ display: 'block' }}>Movers in Karnataka</span>
           </span>
         </h1>
 
@@ -111,7 +117,7 @@ export default function HeroSection() {
             lineHeight: 1.4,
             color: 'var(--fg-muted)'
           }}>
-            Precision handling meets digital transparency. We've redefined the art of moving for the modern world.
+            Top-rated packers and movers near you. Safe, secure, and affordable house shifting services in Doddaballapur, Bashettihalli, and Bangalore Rural.
           </p>
         </div>
 
@@ -120,9 +126,10 @@ export default function HeroSection() {
           gap: 'var(--space-md)',
           justifyContent: 'center',
           flexWrap: 'wrap',
+          marginBottom: 'var(--space-lg)',
         }}>
           <Magnetic>
-            <a href="https://wa.me/911800123456"
+            <a href="https://wa.me/918660616322"
               target="_blank" rel="noopener noreferrer"
               className="btn-primary"
               style={{ padding: '1.25rem 3rem' }}
@@ -137,6 +144,41 @@ export default function HeroSection() {
               Explore Services
             </a>
           </Magnetic>
+        </div>
+
+        {/* Premium Dual-Contact Pill */}
+        <div className="hero-fadeup glass-premium" style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: 'clamp(0.75rem, 2vw, 1.5rem)',
+          padding: '0.75rem clamp(1rem, 3vw, 2rem)',
+          borderRadius: '99px',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          border: '1px solid var(--border)',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span className="glow-dot" />
+            <span className="text-small" style={{ color: 'var(--fg-muted)' }}>24/7 Support</span>
+          </div>
+          
+          <div style={{ width: '1px', height: '1.5rem', background: 'var(--border)', opacity: 0.5 }} />
+          
+          <a href="tel:+918660616322" style={{ 
+            display: 'flex', alignItems: 'center', gap: '0.5rem', transition: 'color var(--duration-fast)' 
+          }} onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'} onMouseLeave={e => e.currentTarget.style.color = 'inherit'}>
+            <span className="text-small" style={{ color: 'var(--fg-muted)' }}>Manju</span>
+            <span className="text-mono" style={{ fontWeight: 700 }}>86606 16322</span>
+          </a>
+
+          <div style={{ width: '1px', height: '1.5rem', background: 'var(--border)', opacity: 0.5 }} />
+          
+          <a href="tel:+918970980231" style={{ 
+            display: 'flex', alignItems: 'center', gap: '0.5rem', transition: 'color var(--duration-fast)' 
+          }} onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'} onMouseLeave={e => e.currentTarget.style.color = 'inherit'}>
+            <span className="text-small" style={{ color: 'var(--fg-muted)' }}>Shivu</span>
+            <span className="text-mono" style={{ fontWeight: 700 }}>89709 80231</span>
+          </a>
         </div>
       </div>
 
