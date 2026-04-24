@@ -67,4 +67,4 @@ npm run start
 ## 🏆 Designed for Excellence
 SwiftMove is built to showcase what happens when precision handling meets digital transparency. From the first load to the final scroll, every interaction is designed to feel intentional, premium, and trustworthy.
 
-**Built by [Achyuth KP](https://github.com/achyuthkp27) & Antigravity AI**
+**Built by [Achyuth KP](https://github.com/achyuthkp27)**
